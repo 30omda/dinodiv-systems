@@ -1,45 +1,49 @@
 import { motion } from "framer-motion";
+import projectHr from "@/assets/project-hr.jpg";
+import projectCrm from "@/assets/project-crm.jpg";
+import projectAnalytics from "@/assets/project-analytics.jpg";
+import projectHealthcare from "@/assets/project-healthcare.jpg";
+import projectFintech from "@/assets/project-fintech.jpg";
+import projectLogistics from "@/assets/project-logistics.jpg";
 
 const projects = [
   {
     title: "Enterprise HR Platform",
     description: "Full-scale HR management system with employee tracking, payroll, and performance analytics.",
     tags: ["ERP", "SaaS"],
+    image: projectHr,
   },
   {
     title: "Sales CRM Dashboard",
     description: "Real-time sales pipeline management with AI-powered forecasting and team collaboration.",
     tags: ["CRM", "Web"],
+    image: projectCrm,
   },
   {
     title: "E-Commerce Analytics",
     description: "Multi-tenant analytics platform with custom dashboards and automated reporting.",
     tags: ["SaaS", "Web"],
+    image: projectAnalytics,
   },
   {
     title: "Healthcare Management",
     description: "Patient management system with appointment scheduling and digital records.",
     tags: ["ERP", "UI/UX"],
+    image: projectHealthcare,
   },
   {
     title: "FinTech Mobile Platform",
     description: "Digital banking interface with real-time transactions and security compliance.",
     tags: ["SaaS", "UI/UX"],
+    image: projectFintech,
   },
   {
     title: "Logistics Automation",
     description: "End-to-end supply chain management with real-time tracking and optimization.",
     tags: ["ERP", "Web"],
+    image: projectLogistics,
   },
 ];
-
-const tagColors: Record<string, string> = {
-  ERP: "bg-primary/10 text-primary border-primary/20",
-  CRM: "bg-primary/10 text-primary border-primary/20",
-  SaaS: "bg-primary/10 text-primary border-primary/20",
-  "UI/UX": "bg-primary/10 text-primary border-primary/20",
-  Web: "bg-primary/10 text-primary border-primary/20",
-};
 
 const Projects = () => {
   return (
@@ -70,8 +74,15 @@ const Projects = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover-glow"
             >
-              {/* Gradient placeholder for project image */}
-              <div className="h-48 bg-gradient-to-br from-muted to-secondary transition-all group-hover:from-primary/10 group-hover:to-muted" />
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-primary/0 transition-colors duration-300 group-hover:bg-primary/10" />
+              </div>
               <div className="p-6">
                 <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
                 <p className="mb-4 text-sm text-muted-foreground">{project.description}</p>
@@ -79,7 +90,7 @@ const Projects = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`rounded-full border px-3 py-1 text-xs font-medium ${tagColors[tag]}`}
+                      className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
                     >
                       {tag}
                     </span>
