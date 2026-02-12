@@ -51,7 +51,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl"
     >
-      <div className="container mx-auto flex h-20 items-center justify-between px-6">
+      <div className="container  flex h-20 items-center justify-between px-6">
         <a
           href="#"
           onClick={(e) => {
@@ -60,7 +60,12 @@ const Navbar = () => {
           }}
           className="flex items-center gap-3"
         >
-          <img src={dinoLogo} alt="DinoDiv" className="h-10 w-auto" />
+          <img
+            src={dinoLogo}
+            alt="DinoDiv Logo"
+            className="h-32 w-auto object-contain"
+          />
+
         </a>
 
         {/* Desktop */}
@@ -70,9 +75,8 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                activeSection === link.id ? "text-primary" : "text-muted-foreground"
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === link.id ? "text-primary" : "text-muted-foreground"
+                }`}
             >
               {link.label}
             </a>
@@ -108,9 +112,8 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
-                activeSection === link.id ? "text-primary" : "text-muted-foreground"
-              }`}
+              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${activeSection === link.id ? "text-primary" : "text-muted-foreground"
+                }`}
             >
               {link.label}
             </a>
