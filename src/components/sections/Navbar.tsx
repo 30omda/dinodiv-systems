@@ -1,17 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import dinoLogo from "@/assets/dino-logo-dark.png";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Services", href: "#services", id: "services" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Contact", href: "#contact", id: "contact" },
 ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    const sectionIds = navLinks.map((l) => l.id);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollTo = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileOpen(false);
+  }, []);
 
   return (
     <motion.nav
@@ -21,7 +52,14 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
-        <a href="#" className="flex items-center gap-3">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="flex items-center gap-3"
+        >
           <img src={dinoLogo} alt="DinoDiv" className="h-10 w-auto" />
         </a>
 
@@ -31,13 +69,17 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              onClick={(e) => scrollTo(e, link.href)}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                activeSection === link.id ? "text-primary" : "text-muted-foreground"
+              }`}
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
+            onClick={(e) => scrollTo(e, "#contact")}
             className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 glow-green"
           >
             Start Your Project
@@ -65,15 +107,17 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              onClick={(e) => scrollTo(e, link.href)}
+              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
+                activeSection === link.id ? "text-primary" : "text-muted-foreground"
+              }`}
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            onClick={() => setMobileOpen(false)}
+            onClick={(e) => scrollTo(e, "#contact")}
             className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
           >
             Start Your Project
