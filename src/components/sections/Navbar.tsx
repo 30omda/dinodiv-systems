@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 import dinoLogo from "@/assets/dino-logo-dark.png";
 
 const navLinks = [
@@ -13,6 +14,7 @@ const navLinks = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -81,6 +83,13 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <button
+            onClick={toggleTheme}
+            className="rounded-lg border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground hover:border-primary/40"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
@@ -118,6 +127,15 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <div className="flex items-center gap-3 py-3">
+            <button
+              onClick={toggleTheme}
+              className="rounded-lg border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
