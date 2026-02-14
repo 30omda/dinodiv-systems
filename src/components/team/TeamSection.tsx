@@ -23,7 +23,7 @@ const teamMembers: TeamMember[] = [
   //   linkedin: "https://linkedin.com",
   // },
   {
-    name: "Ali Hassan",
+    name: "Mahmoud Elamrosy",
     role: "Backend Engineer",
     image: MelamrosyImage,
     description:
