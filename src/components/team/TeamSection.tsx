@@ -1,51 +1,57 @@
 import { motion } from "framer-motion";
 import TeamCard from "./TeamCard";
 import type { TeamMember } from "@/types/team";
-
+import mohamedImage from "@/assets/mohamed.jpg";
+import MelamrosyImage from "@/assets/mahmoud.jpg";
+import MohabImage from "@/assets/mohab.jpg";
 const teamMembers: TeamMember[] = [
   {
-    name: "Ahmad Raza",
-    role: "Founder & Lead Developer",
+    name: "Mohamed Emad",
+    role: "Frontend Engineer",
+    image: mohamedImage,
     description:
-      "Full-stack architect specializing in scalable ERP and SaaS platforms. Passionate about clean code and performance.",
-    linkedin: "https://linkedin.com",
-    github: "https://github.com",
-    portfolio: "https://example.com",
+      "Frontend Engineer specializing in building user-friendly and responsive web applications.",
+    linkedin: "https://www.linkedin.com/in/mohamed-shamseldeen/",
+    github: "https://github.com/30omda",
+    portfolio: "https://30omda.vercel.app/",
   },
-  {
-    name: "Sara Khan",
-    role: "UI/UX Designer",
-    description:
-      "Crafting intuitive, pixel-perfect interfaces that balance aesthetics with usability for enterprise applications.",
-    linkedin: "https://linkedin.com",
-  },
+  // {
+  //   name: "Sara Khan",
+  //   role: "UI/UX Designer",
+  //   description:
+  //     "Crafting intuitive, pixel-perfect interfaces that balance aesthetics with usability for enterprise applications.",
+  //   linkedin: "https://linkedin.com",
+  // },
   {
     name: "Ali Hassan",
     role: "Backend Engineer",
+    image: MelamrosyImage,
     description:
-      "Database specialist building robust APIs and microservices for high-traffic production environments.",
-    github: "https://github.com",
+      "Backend Engineer specializing in building robust APIs and microservices for high-traffic production environments.",
+    linkedin: "https://www.linkedin.com/in/mahmoud-elamrosy/",
+    github: "https://github.com/melamrosy72",
   },
+  // {
+  //   name: "Fatima Noor",
+  //   role: "Project Manager",
+  //   description:
+  //     "Driving cross-functional teams to deliver complex software projects on time with agile methodologies.",
+  //   linkedin: "https://linkedin.com",
+  //   portfolio: "https://example.com",
+  // },
+  // {
+  //   name: "Usman Tariq",
+  //   role: "DevOps Engineer",
+  //   description:
+  //     "Automating CI/CD pipelines and cloud infrastructure to ensure zero-downtime deployments at scale.",
+  //   github: "https://github.com",
+  // },
   {
-    name: "Fatima Noor",
-    role: "Project Manager",
+    name: "Mohab Abdelmohsen",
+    role: "Cloud Engineer",
+    image: MohabImage,
     description:
-      "Driving cross-functional teams to deliver complex software projects on time with agile methodologies.",
-    linkedin: "https://linkedin.com",
-    portfolio: "https://example.com",
-  },
-  {
-    name: "Usman Tariq",
-    role: "DevOps Engineer",
-    description:
-      "Automating CI/CD pipelines and cloud infrastructure to ensure zero-downtime deployments at scale.",
-    github: "https://github.com",
-  },
-  {
-    name: "Hira Malik",
-    role: "QA Lead",
-    description:
-      "Ensuring software excellence through comprehensive testing strategies and automated quality assurance.",
+      "Cloud Engineer specializing in AWS and Azure cloud platforms. Passionate about cloud architecture and automation.",
   },
 ];
 

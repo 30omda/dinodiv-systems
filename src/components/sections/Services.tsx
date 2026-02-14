@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Palette, Globe, Database, Cloud, Zap } from "lucide-react";
+import { Palette, Globe, Database, Cloud, Zap, Server } from "lucide-react";
+
+
 
 const services = [
   {
@@ -23,11 +25,19 @@ const services = [
     description: "Multi-tenant Architecture, Subscription Systems, Analytics Platforms",
   },
   {
+    icon: Server,
+    title: "Cloud Infrastructure & DevOps",
+    description:
+      "Cloud deployment, scalable hosting architecture, CI/CD pipelines, performance optimization and secure infrastructure management.",
+  },
+
+  {
     icon: Zap,
     title: "Digital Automation & Integration",
     description: "API Integration, Workflow Automation, Digital Transformation",
   },
 ];
+
 
 const Services = () => {
   return (

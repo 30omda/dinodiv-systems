@@ -27,7 +27,7 @@ const TeamCard = ({ member, index }: TeamCardProps) => {
     >
       <Avatar className="mx-auto mb-5 h-24 w-24 border-2 border-border transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_hsl(82_100%_50%/0.2)]">
         {member.image && (
-          <AvatarImage src={member.image} alt={member.name} />
+          <AvatarImage src={member.image} alt={member.name} className="object-cover"/>
         )}
         <AvatarFallback className="bg-secondary text-lg font-semibold text-primary">
           {getInitials(member.name)}
