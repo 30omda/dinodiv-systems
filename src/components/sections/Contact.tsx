@@ -110,9 +110,15 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Book a Meeting</p>
-                <a href="#" className="text-sm text-primary hover:underline">
-                  Schedule on Calendly →
+                <a
+                  href="https://cal.com/diodiv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline"
+                >
+                  Let’s Talk →
                 </a>
+
               </div>
             </div>
           </motion.div>
