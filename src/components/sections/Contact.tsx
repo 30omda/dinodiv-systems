@@ -1,15 +1,38 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Mail, MessageCircle, Calendar } from "lucide-react";
+import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
+import { sendContactEmail, sendAutoReply } from "@/lib/email";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder - would integrate with backend
-    console.log("Form submitted:", form);
+    setLoading(true);
+    setSuccess(false);
+    setError(false);
+
+    const formData = {
+      user_name: form.name,
+      user_email: form.email,
+      company: form.company,
+      message: form.message,
+    };
+
+    try {
+      await sendContactEmail(formData);
+      await sendAutoReply(formData);
+      setSuccess(true);
+      setForm({ name: "", email: "", company: "", message: "" });
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,8 +96,31 @@ const Contact = () => {
               className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
               required
             />
-            <Button variant="hero" size="lg" type="submit" className="w-full sm:w-auto">
-              Send Message
+            {success && (
+              <p className="text-sm font-medium text-primary">
+                Thank you! We&apos;ll contact you shortly.
+              </p>
+            )}
+            {error && (
+              <p className="text-sm font-medium text-destructive">
+                Something went wrong. Please try again.
+              </p>
+            )}
+            <Button
+              variant="hero"
+              size="lg"
+              type="submit"
+              disabled={loading}
+              className="w-full sm:w-auto"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
             </Button>
           </motion.form>
 
@@ -92,7 +138,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">hello@dinodiv.com</p>
+                <p className="text-sm text-muted-foreground">dinodiv.info@gmail.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
