@@ -1,7 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/hooks/use-theme";
+import { Menu, X } from "lucide-react";
+// TODO: Light/Dark mode temporarily disabled for branding consistency
+// Can be re-enabled in future release
+// import { Sun, Moon } from "lucide-react";
+// import { useTheme } from "@/hooks/use-theme";
 import dinoLogo from "@/assets/dino-logo-dark.png";
 
 const navLinks = [
@@ -14,7 +17,8 @@ const navLinks = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const { theme, toggleTheme } = useTheme();
+  // TODO: Re-enable theme toggle when light mode branding is finalized
+  // const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -53,7 +57,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl"
     >
-      <div className="container  flex h-20 items-center justify-between px-6">
+      <div className="container flex h-20 items-center justify-between px-6">
         <a
           href="#"
           onClick={(e) => {
@@ -64,10 +68,9 @@ const Navbar = () => {
         >
           <img
             src={dinoLogo}
-            alt="DinoDiv Logo"
+            alt="DinoDiv — Web Development & Digital Systems"
             className="h-32 w-auto object-contain"
           />
-
         </a>
 
         {/* Desktop */}
@@ -77,12 +80,14 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === link.id ? "text-primary" : "text-muted-foreground"
-                }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                activeSection === link.id ? "text-primary" : "text-muted-foreground"
+              }`}
             >
               {link.label}
             </a>
           ))}
+          {/* TODO: Re-enable theme toggle when light mode branding is finalized
           <button
             onClick={toggleTheme}
             className="rounded-lg border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground hover:border-primary/40"
@@ -90,6 +95,7 @@ const Navbar = () => {
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+          */}
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
@@ -121,12 +127,14 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${activeSection === link.id ? "text-primary" : "text-muted-foreground"
-                }`}
+              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
+                activeSection === link.id ? "text-primary" : "text-muted-foreground"
+              }`}
             >
               {link.label}
             </a>
           ))}
+          {/* TODO: Re-enable theme toggle when light mode branding is finalized
           <div className="flex items-center gap-3 py-3">
             <button
               onClick={toggleTheme}
@@ -136,6 +144,7 @@ const Navbar = () => {
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
+          */}
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
