@@ -2,7 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
-import { sendContactEmail, sendAutoReply } from "@/lib/email";
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
@@ -15,21 +16,37 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (honeypot) return; // Bot detection
+
     setLoading(true);
     setSuccess(false);
     setError(false);
     setErrors({});
 
-    const formData = {
-      user_name: form.name,
-      user_email: form.email,
-      company: form.company,
-      message: form.message,
-    };
+    if (!EMAIL_REGEX.test(form.email)) {
+      setErrors({ email: "Please enter a valid email address" });
+      setLoading(false);
+      return;
+    }
 
     try {
-      await sendContactEmail(formData);
-      await sendAutoReply(formData);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to send message");
+      }
+
       setSuccess(true);
       setForm({ name: "", email: "", company: "", message: "" });
     } catch {
@@ -39,8 +56,6 @@ const Contact = () => {
     }
   };
 
-
-  
 
   return (
     <section id="contact" className="relative py-24 lg:py-32">
