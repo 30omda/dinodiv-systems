@@ -6,15 +6,19 @@ import { sendContactEmail, sendAutoReply } from "@/lib/email";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
+  const [honeypot, setHoneypot] = useState("");
+  const [errors, setErrors] = useState<Record<string, string | undefined>>({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypot) return; // Bot detection
     setLoading(true);
     setSuccess(false);
     setError(false);
+    setErrors({});
 
     const formData = {
       user_name: form.name,
@@ -39,17 +43,17 @@ const Contact = () => {
     <section id="contact" className="relative py-24 lg:py-32">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Get In <span className="text-gradient-green">Touch</span>
           </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Tell us about your project and let's build something powerful together.
+            Tell us about your project and let DinoDiv build something powerful for you.
           </p>
         </motion.div>
 
@@ -63,23 +67,41 @@ const Contact = () => {
             onSubmit={handleSubmit}
             className="space-y-5 lg:col-span-3"
           >
+            {/* Honeypot — hidden from users */}
+            <input
+              type="text"
+              name="website"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              className="absolute -left-[9999px] opacity-0"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
             <div className="grid gap-5 sm:grid-cols-2">
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                required
-              />
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={form.name}
+                  onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: undefined }); }}
+                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  required
+                />
+                {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  value={form.email}
+                  onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: undefined }); }}
+                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  required
+                />
+                {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+              </div>
             </div>
             <input
               type="text"
@@ -162,9 +184,8 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-primary hover:underline"
                 >
-                  Let’s Talk →
+                  Let's Talk →
                 </a>
-
               </div>
             </div>
           </motion.div>
