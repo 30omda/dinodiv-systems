@@ -1,43 +1,38 @@
 import { motion } from "framer-motion";
 import { Palette, Globe, Database, Cloud, Zap, Server } from "lucide-react";
 
-
-
 const services = [
   {
     icon: Palette,
     title: "UI/UX & Product Design",
-    description: "Wireframes, Design Systems, User Experience Strategy",
+    description: "Strategic wireframes, cohesive design systems, and user experience strategies that drive engagement and conversions.",
   },
   {
     icon: Globe,
     title: "Web Development",
-    description: "Corporate Websites, High-performance Frontend, Modern Interfaces",
+    description: "High-performance corporate websites, landing pages, and modern frontend interfaces built with cutting-edge technologies.",
   },
   {
     icon: Database,
     title: "Custom ERP & CRM Systems",
-    description: "HR Systems, Sales Dashboards, Admin Panels, Business Management",
+    description: "Enterprise-grade HR systems, sales dashboards, admin panels, and business management platforms tailored to your workflow.",
   },
   {
     icon: Cloud,
-    title: "SaaS Platforms",
-    description: "Multi-tenant Architecture, Subscription Systems, Analytics Platforms",
+    title: "SaaS Platform Development",
+    description: "Multi-tenant architecture, subscription billing systems, and analytics platforms engineered for scale and reliability.",
   },
   {
     icon: Server,
     title: "Cloud Infrastructure & DevOps",
-    description:
-      "Cloud deployment, scalable hosting architecture, CI/CD pipelines, performance optimization and secure infrastructure management.",
+    description: "Scalable cloud deployment, CI/CD pipelines, performance optimization, and secure infrastructure management.",
   },
-
   {
     icon: Zap,
     title: "Digital Automation & Integration",
-    description: "API Integration, Workflow Automation, Digital Transformation",
+    description: "API integration, workflow automation, and digital transformation solutions that streamline your operations.",
   },
 ];
-
 
 const Services = () => {
   return (
@@ -45,17 +40,17 @@ const Services = () => {
       <div className="absolute inset-0 bg-radial-green opacity-50" />
       <div className="container relative mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Our <span className="text-gradient-green">Services</span>
           </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            End-to-end digital solutions tailored to your business needs.
+            End-to-end digital solutions by DinoDiv — from concept to deployment.
           </p>
         </motion.div>
 
@@ -66,8 +61,8 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-xl border border-border bg-card p-8 transition-all hover-glow"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group flex flex-col rounded-xl border border-border bg-card p-8 transition-all duration-300 hover:scale-[1.02] hover-glow"
             >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                 <service.icon size={24} />

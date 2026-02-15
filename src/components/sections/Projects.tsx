@@ -10,37 +10,37 @@ const projects = [
   {
     title: "Enterprise HR Platform",
     description: "Full-scale HR management system with employee tracking, payroll, and performance analytics.",
-    tags: ["ERP", "SaaS"],
+    tags: ["React", "Node.js", "PostgreSQL", "ERP"],
     image: projectHr,
   },
   {
     title: "Sales CRM Dashboard",
-    description: "Real-time sales pipeline management with AI-powered forecasting and team collaboration.",
-    tags: ["CRM", "Web"],
+    description: "Real-time sales pipeline management with AI-powered forecasting and team collaboration tools.",
+    tags: ["TypeScript", "Next.js", "Supabase", "CRM"],
     image: projectCrm,
   },
   {
     title: "E-Commerce Analytics",
-    description: "Multi-tenant analytics platform with custom dashboards and automated reporting.",
-    tags: ["SaaS", "Web"],
+    description: "Multi-tenant analytics platform with custom dashboards and automated reporting engine.",
+    tags: ["React", "Python", "AWS", "SaaS"],
     image: projectAnalytics,
   },
   {
     title: "Healthcare Management",
-    description: "Patient management system with appointment scheduling and digital records.",
-    tags: ["ERP", "UI/UX"],
+    description: "Patient management system with appointment scheduling, digital records, and compliance.",
+    tags: ["TypeScript", "Docker", "PostgreSQL", "ERP"],
     image: projectHealthcare,
   },
   {
     title: "FinTech Mobile Platform",
     description: "Digital banking interface with real-time transactions and security compliance.",
-    tags: ["SaaS", "UI/UX"],
+    tags: ["React Native", "Node.js", "Redis", "SaaS"],
     image: projectFintech,
   },
   {
     title: "Logistics Automation",
-    description: "End-to-end supply chain management with real-time tracking and optimization.",
-    tags: ["ERP", "Web"],
+    description: "End-to-end supply chain management with real-time tracking and route optimization.",
+    tags: ["Vue.js", "Python", "MongoDB", "ERP"],
     image: projectLogistics,
   },
 ];
@@ -50,17 +50,17 @@ const Projects = () => {
     <section id="projects" className="relative py-24 lg:py-32">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Selected <span className="text-gradient-green">Projects</span>
           </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            A glimpse into the systems we've built for ambitious businesses.
+            A glimpse into the enterprise systems DinoDiv has built for ambitious businesses.
           </p>
         </motion.div>
 
@@ -71,17 +71,17 @@ const Projects = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all hover-glow"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:scale-[1.02] hover-glow"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} — DinoDiv Project`}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-primary/0 transition-colors duration-300 group-hover:bg-primary/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <div className="p-6">
                 <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
