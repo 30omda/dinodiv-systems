@@ -54,13 +54,14 @@ const teamMembers: TeamMember[] = [
       "Cloud Engineer specializing in AWS and Azure cloud platforms. Passionate about cloud architecture and automation.",
   },
 ];
-
+// test
 const TeamSection = () => {
   return (
     <section id="team" className="relative py-24 sm:py-32">
       <div className="absolute inset-0 bg-radial-green opacity-30" />
       <div className="container relative mx-auto px-6">
         <motion.div
+        
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
