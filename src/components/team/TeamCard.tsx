@@ -10,6 +10,7 @@ const getInitials = (name: string) =>
     .join("")
     .toUpperCase()
     .slice(0, 2);
+    //this is commit for testing the deployment of the website, please ignore this commit message, it is not important
 
 interface TeamCardProps {
   member: TeamMember;
