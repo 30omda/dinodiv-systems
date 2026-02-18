@@ -178,7 +178,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">dinodiv.info@gmail.com</p>
+                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -187,7 +187,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground">+1 (555) 000-0000</p>
+                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
