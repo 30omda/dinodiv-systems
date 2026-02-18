@@ -3,20 +3,20 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "DinoDiv transformed our entire HR workflow into a seamless digital platform. Their understanding of enterprise systems is unmatched.",
-    name: "Sarah Chen",
+    quote: "A top-tier software partner! Their ability to translate complex business requirements into a scalable and robust application is impressive. They don't just write code; they build real value.",
+    name: "Andrei S. ",
     role: "CTO, NovaTech Industries",
     stars: 5,
   },
   {
-    quote: "The SaaS platform they built handles 50k+ daily users flawlessly. Clean architecture, incredible performance, and a team that truly cares.",
-    name: "Marcus Andersen",
+    quote: "بصراحة التعامل مع الشركة كان إضافة قوية لينا. فريق فاهم شغله كويس جداً، وعندهم مرونة في تنفيذ الطلبات وسرعة في الرد. أهم حاجة عجبتنا هي الالتزام بالمواعيد والجودة اللي بتقدموها، فعلاً شركة محترفة وتستاهل الثقة.",
+    name: "م. أحمد ممدوح",
     role: "CEO, ScalePoint",
     stars: 5,
   },
   {
-    quote: "From wireframes to deployment, DinoDiv delivered a CRM that our sales team actually loves using. That's rare.",
-    name: "Lina Torres",
+    quote: "تعاملنا مع الشركة في أكثر من مشروع، وما وجدنا منهم إلا كل اتقان وتفاني. عندهم رؤية واضحة وحلول مبتكرة خدمت تطلعاتنا بالشكل المطلوب. نشكر القائمين على هذا الكيان للاحترافية العالية وروح التعاون المستمرة.",
+    name: "أ. فيصل",
     role: "VP of Sales, BrightEdge",
     stars: 5,
   },
@@ -68,7 +68,7 @@ const Testimonials = () => {
               </div>
               <div className="border-t border-border pt-5">
                 <p className="text-sm font-semibold">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.role}</p>
+                {/* <p className="text-xs text-muted-foreground">{t.role}</p> */}
               </div>
             </motion.div>
           ))}
