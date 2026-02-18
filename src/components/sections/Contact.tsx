@@ -28,7 +28,7 @@ const Contact = () => {
         ),
         description: (
           <span className="font-medium text-black">
-            Your message has been received. DinoDiv team will contact you as soon as possible.
+            Your message has been received. DinoDiv team will contact you as soon as possible.🎉
           </span>
         ),
         fill: "#92e701",
