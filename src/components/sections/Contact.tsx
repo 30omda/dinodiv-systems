@@ -33,9 +33,9 @@ const Contact = () => {
         ),
         fill: "#92e701",
         styles: {
-          title: "text-black! font-semibold!",
-          description: "text-black!",
-          badge: "bg-black!",
+          title: "text-black font-semibold",
+          description: "text-black",
+          badge: "bg-black",
         },
         roundness: 8,
       });
