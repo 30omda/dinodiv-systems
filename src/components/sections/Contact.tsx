@@ -23,7 +23,7 @@ const Contact = () => {
           <img 
             src={dinoLogo} 
             alt="DinoDiv Logo" 
-            className="h-5 w-5 object-contain"
+            className="h-20 w-20 object-contain"
           />
         ),
         description: (
@@ -33,9 +33,9 @@ const Contact = () => {
         ),
         fill: "#92e701",
         styles: {
-          title: "text-black font-semibold",
+          title: "text-black! font-semibold!",
           description: "text-black!",
-          badge: "bg-black",
+          badge: "bg-black!",
         },
         roundness: 8,
       });
