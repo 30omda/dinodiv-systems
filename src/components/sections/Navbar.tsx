@@ -110,6 +110,8 @@ const Navbar = () => {
           className="text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -118,6 +120,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <motion.div
+          id="mobile-menu"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="border-t border-border bg-background px-6 pb-6 md:hidden"
