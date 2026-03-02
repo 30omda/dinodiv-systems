@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving Contact Form Accessibility
+**Learning:** For accessible forms where only placeholders are desired, use `<Label>` components with the `sr-only` class to provide context to screen readers without changing the visual design. When using third-party error components like `ValidationError`, wrap them in a `div` with a target `id` to ensure `aria-describedby` links correctly. Always use optional chaining and nullish coalescing (e.g., `(errors?.getErrors("field")?.length ?? 0) > 0`) when checking for form errors to prevent runtime crashes when errors are null.
+**Action:** Implement `<Label>` with `htmlFor` and `id`, use `aria-describedby` for error messages, and ensure robust error state checking to provide a safe and accessible user experience.

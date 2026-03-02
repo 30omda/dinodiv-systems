@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -99,9 +100,9 @@ const Contact = () => {
 
 
               <div>
-
+                <Label htmlFor="name" className="sr-only">Your Name</Label>
                 <input
-
+                  id="name"
                   type="text"
 
                   name="name"
@@ -109,6 +110,7 @@ const Contact = () => {
                   placeholder="Your Name"
 
                   required
+                  aria-required="true"
 
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
@@ -119,9 +121,9 @@ const Contact = () => {
 
 
               <div>
-
+                <Label htmlFor="email" className="sr-only">Email Address</Label>
                 <input
-
+                  id="email"
                   type="email"
 
                   name="email"
@@ -129,23 +131,26 @@ const Contact = () => {
                   placeholder="Email Address"
 
                   required
+                  aria-required="true"
+                  aria-invalid={(state.errors?.getErrors("email")?.length ?? 0) > 0}
+                  aria-describedby="email-error"
 
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
                 />
+                <div id="email-error">
+                  <ValidationError
 
-                <ValidationError
+                    prefix="Email"
 
-                  prefix="Email"
+                    field="email"
 
-                  field="email"
+                    errors={state.errors}
 
-                  errors={state.errors}
+                    className="mt-1 text-xs text-destructive"
 
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+                  />
+                </div>
               </div>
 
 
@@ -154,27 +159,29 @@ const Contact = () => {
 
 
             {/* Company */}
+            <div>
+              <Label htmlFor="company" className="sr-only">Company Name</Label>
+              <input
+                id="company"
+                type="text"
 
-            <input
+                name="company"
 
-              type="text"
+                placeholder="Company Name"
 
-              name="company"
+                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
+              />
+            </div>
 
 
 
             {/* Message */}
 
             <div>
-
+              <Label htmlFor="message" className="sr-only">Tell us about your project...</Label>
               <textarea
-
+                id="message"
                 name="message"
 
                 placeholder="Tell us about your project..."
@@ -182,23 +189,26 @@ const Contact = () => {
                 rows={5}
 
                 required
+                aria-required="true"
+                aria-invalid={(state.errors?.getErrors("message")?.length ?? 0) > 0}
+                aria-describedby="message-error"
 
                 className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
               />
+              <div id="message-error">
+                <ValidationError
 
-              <ValidationError
+                  prefix="Message"
 
-                prefix="Message"
+                  field="message"
 
-                field="message"
+                  errors={state.errors}
 
-                errors={state.errors}
+                  className="mt-1 text-xs text-destructive"
 
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+                />
+              </div>
             </div>
 
 
