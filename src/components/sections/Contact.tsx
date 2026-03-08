@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -43,14 +44,9 @@ const Contact = () => {
   }, [state.succeeded]);
 
   return (
-
     <section id="contact" className="relative py-24 lg:py-32">
-
       <div className="container mx-auto px-6">
-
-
         {/* Heading */}
-
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,201 +54,121 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-
             Get In <span className="text-gradient-green">Touch</span>
-
           </h2>
-
           <p className="mx-auto max-w-2xl text-muted-foreground">
-
             Tell us about your project and let DinoDiv build something powerful.
-
           </p>
-
         </motion.div>
 
-
-
         <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-5">
-
-
           {/* FORM */}
-
           <motion.form
-
             onSubmit={handleSubmit}
-
             className="space-y-5 lg:col-span-3"
-
             initial={{ opacity: 0, x: -30 }}
-
             whileInView={{ opacity: 1, x: 0 }}
-
           >
-
-
             {/* Name + Email Grid */}
-
             <div className="grid gap-5 sm:grid-cols-2">
-
-
-              <div>
-
+              <div className="space-y-2">
+                <Label htmlFor="name" className="sr-only">Your Name</Label>
                 <input
-
+                  id="name"
                   type="text"
-
                   name="name"
-
                   placeholder="Your Name"
-
                   required
-
+                  aria-required="true"
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
                 />
-
               </div>
 
-
-
-              <div>
-
+              <div className="space-y-2">
+                <Label htmlFor="email" className="sr-only">Email Address</Label>
                 <input
-
+                  id="email"
                   type="email"
-
                   name="email"
-
                   placeholder="Email Address"
-
                   required
-
+                  aria-required="true"
+                  aria-invalid={!!state.errors?.getFieldErrors("email")?.length}
+                  aria-describedby="email-error"
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
                 />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+                <div id="email-error">
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
+                    className="mt-1 text-xs text-destructive"
+                  />
+                </div>
               </div>
-
-
             </div>
-
-
 
             {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
-
-            {/* Message */}
-
-            <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
+            <div className="space-y-2">
+              <Label htmlFor="company" className="sr-only">Company Name</Label>
+              <input
+                id="company"
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
               />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
             </div>
 
-
+            {/* Message */}
+            <div className="space-y-2">
+              <Label htmlFor="message" className="sr-only">Tell us about your project...</Label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell us about your project..."
+                rows={5}
+                required
+                aria-required="true"
+                aria-invalid={!!state.errors?.getFieldErrors("message")?.length}
+                aria-describedby="message-error"
+                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+              />
+              <div id="message-error">
+                <ValidationError
+                  prefix="Message"
+                  field="message"
+                  errors={state.errors}
+                  className="mt-1 text-xs text-destructive"
+                />
+              </div>
+            </div>
 
             {/* Success */}
-
             {state.succeeded && (
-
               <p className="text-sm font-medium text-green-500">
-
                 ✅ Thank you! We'll contact you shortly.
-
               </p>
-
             )}
 
-
-
             {/* Submit Button */}
-
             <Button
-
               variant="hero"
-
               size="lg"
-
               type="submit"
-
               disabled={state.submitting}
-
               className="w-full sm:w-auto"
-
             >
-
               {state.submitting ? (
-
                 <>
-
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-
                   Sending...
-
                 </>
-
               ) : (
-
                 "Send Message"
-
               )}
-
             </Button>
-
-
-
           </motion.form>
 
 
