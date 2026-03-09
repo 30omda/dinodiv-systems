@@ -1,0 +1,3 @@
+## 2026-03-09 - Accessible Form Micro-Enhancements
+**Learning:** For accessible forms where only placeholders are desired, use `<Label>` components with the `sr-only` class to provide context to screen readers without changing the visual design. When using `aria-describedby` with third-party error components like `ValidationError`, wrap the component in a `div` with the target `id` to ensure the link works regardless of the component's internal prop forwarding. Use `!!state.errors?.getFieldErrors("field")?.length` to safely set `aria-invalid`.
+**Action:** Always apply these patterns to form fields to ensure high accessibility and robust screen reader support.
