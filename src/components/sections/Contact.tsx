@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -96,109 +99,31 @@ const Contact = () => {
             {/* Name + Email Grid */}
 
             <div className="grid gap-5 sm:grid-cols-2">
-
-
-              <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
+              <div className="space-y-1">
+                <Label htmlFor="contact-name" className="sr-only">Your Name</Label>
+                <Input id="contact-name" type="text" name="name" placeholder="Your Name" required aria-required="true" className="h-auto py-3 bg-card" />
               </div>
 
-
-
-              <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+              <div className="space-y-1">
+                <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
+                <Input id="contact-email" type="email" name="email" placeholder="Email Address" required aria-required="true" aria-invalid={!!state.errors?.getFieldErrors("email")?.length} aria-describedby="email-error" className="h-auto py-3 bg-card" />
+                <div id="email-error">
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-xs text-destructive" />
+                </div>
               </div>
-
-
             </div>
 
+            <div className="space-y-1">
+              <Label htmlFor="contact-company" className="sr-only">Company Name</Label>
+              <Input id="contact-company" type="text" name="company" placeholder="Company Name" className="h-auto py-3 bg-card" />
+            </div>
 
-
-            {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
-
-            {/* Message */}
-
-            <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+            <div className="space-y-1">
+              <Label htmlFor="contact-message" className="sr-only">Tell us about your project...</Label>
+              <Textarea id="contact-message" name="message" placeholder="Tell us about your project..." rows={5} required aria-required="true" aria-invalid={!!state.errors?.getFieldErrors("message")?.length} aria-describedby="message-error" className="resize-none bg-card py-3" />
+              <div id="message-error">
+                <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-xs text-destructive" />
+              </div>
             </div>
 
 
