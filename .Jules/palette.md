@@ -1,0 +1,3 @@
+## 2025-05-22 - Accessible Placeholder-only Forms
+**Learning:** For forms where the visual design relies on placeholders and lacks visible labels, using Radix-based `<Label>` components with the `sr-only` class provides the necessary context for screen readers without altering the visual brand identity. Additionally, linking `aria-describedby` to a `role="alert"` wrapper around third-party validation components (like `@formspree/react`) ensures that error messages are properly announced when they appear.
+**Action:** When migrating raw inputs to Shadcn components in placeholder-focused designs, always include `sr-only` labels and explicit ARIA error linkages to maintain high accessibility standards without compromising aesthetics.
