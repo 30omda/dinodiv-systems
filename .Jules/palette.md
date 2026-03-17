@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessible Placeholder-only Forms]
+**Learning:** For designs that use only placeholders as visual labels, accessibility can be maintained by using Shadcn `<Label>` components with the `sr-only` class. This provides the necessary context for screen readers without altering the visual design. Additionally, for `aria-describedby` to work with third-party error components like Formspree's `ValidationError`, wrapping them in a `div` with a unique `id` and `role="alert"` ensures screen readers announce the error.
+**Action:** Always use `sr-only` labels for placeholder-only inputs and wrap validation errors in `role="alert"` containers linked via `aria-describedby`.
