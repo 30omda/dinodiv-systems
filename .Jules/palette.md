@@ -1,0 +1,3 @@
+## 2026-03-19 - Contact Form Accessibility
+**Learning:** For accessible forms where only placeholders are desired, use `<Label>` components with the `sr-only` class to provide context to screen readers without changing the visual design. Linking validation errors via `aria-describedby` to a `div` with `role="alert"` ensures screen readers announce errors immediately.
+**Action:** Always use the `sr-only` class for labels when visual placeholders are preferred over visible labels, and ensure all ARIA attributes (`aria-required`, `aria-invalid`, `aria-describedby`) are correctly applied for form validation.
