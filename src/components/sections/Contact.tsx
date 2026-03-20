@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -100,7 +103,13 @@ const Contact = () => {
 
               <div>
 
-                <input
+                <Label htmlFor="contact-name" className="sr-only">
+                  Your Name
+                </Label>
+
+                <Input
+
+                  id="contact-name"
 
                   type="text"
 
@@ -110,7 +119,9 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  aria-required="true"
+
+                  className="w-full h-auto rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
                 />
 
@@ -120,7 +131,13 @@ const Contact = () => {
 
               <div>
 
-                <input
+                <Label htmlFor="contact-email" className="sr-only">
+                  Email Address
+                </Label>
+
+                <Input
+
+                  id="contact-email"
 
                   type="email"
 
@@ -130,21 +147,31 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  aria-required="true"
+
+                  aria-invalid={!!state.errors?.getErrors("email")?.length}
+
+                  aria-describedby="email-error"
+
+                  className="w-full h-auto rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
                 />
 
-                <ValidationError
+                <div id="email-error" role="alert">
 
-                  prefix="Email"
+                  <ValidationError
 
-                  field="email"
+                    prefix="Email"
 
-                  errors={state.errors}
+                    field="email"
 
-                  className="mt-1 text-xs text-destructive"
+                    errors={state.errors}
 
-                />
+                    className="mt-1 text-xs text-destructive"
+
+                  />
+
+                </div>
 
               </div>
 
@@ -155,17 +182,24 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div>
+              <Label htmlFor="contact-company" className="sr-only">
+                Company Name
+              </Label>
+              <Input
 
-              type="text"
+                id="contact-company"
 
-              name="company"
+                type="text"
 
-              placeholder="Company Name"
+                name="company"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                placeholder="Company Name"
 
-            />
+                className="w-full h-auto rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+
+              />
+            </div>
 
 
 
@@ -173,7 +207,13 @@ const Contact = () => {
 
             <div>
 
-              <textarea
+              <Label htmlFor="contact-message" className="sr-only">
+                Tell us about your project
+              </Label>
+
+              <Textarea
+
+                id="contact-message"
 
                 name="message"
 
@@ -183,21 +223,31 @@ const Contact = () => {
 
                 required
 
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                aria-required="true"
+
+                aria-invalid={!!state.errors?.getErrors("message")?.length}
+
+                aria-describedby="message-error"
+
+                className="w-full min-h-[140px] resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
               />
 
-              <ValidationError
+              <div id="message-error" role="alert">
 
-                prefix="Message"
+                <ValidationError
 
-                field="message"
+                  prefix="Message"
 
-                errors={state.errors}
+                  field="message"
 
-                className="mt-1 text-xs text-destructive"
+                  errors={state.errors}
 
-              />
+                  className="mt-1 text-xs text-destructive"
+
+                />
+
+              </div>
 
             </div>
 
