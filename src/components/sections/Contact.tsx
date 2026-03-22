@@ -3,7 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-// import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
@@ -99,53 +101,16 @@ const Contact = () => {
 
 
               <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
+                <Label htmlFor="name" className="sr-only">Name</Label>
+                <Input id="name" type="text" name="name" placeholder="Your Name" required className="h-auto px-4 py-3" />
               </div>
 
 
 
               <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+                <Label htmlFor="email" className="sr-only">Email</Label>
+                <Input id="email" type="email" name="email" placeholder="Email Address" required aria-invalid={!!state.errors?.getErrors("email")?.length} aria-describedby="email-error" className="h-auto px-4 py-3" />
+                <div id="email-error" role="alert"><ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-xs text-destructive" /></div>
               </div>
 
 
@@ -154,51 +119,18 @@ const Contact = () => {
 
 
             {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
+            <div>
+              <Label htmlFor="company" className="sr-only">Company</Label>
+              <Input id="company" type="text" name="company" placeholder="Company Name" className="h-auto px-4 py-3" />
+            </div>
 
 
 
             {/* Message */}
-
             <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+              <Label htmlFor="message" className="sr-only">Message</Label>
+              <Textarea id="message" name="message" placeholder="Tell us about your project..." rows={5} required aria-invalid={!!state.errors?.getErrors("message")?.length} aria-describedby="message-error" className="h-auto resize-none px-4 py-3" />
+              <div id="message-error" role="alert"><ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-xs text-destructive" /></div>
             </div>
 
 
