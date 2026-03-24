@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -100,7 +101,11 @@ const Contact = () => {
 
               <div>
 
+                <Label htmlFor="contact-name" className="sr-only">Your Name</Label>
+
                 <input
+
+                  id="contact-name"
 
                   type="text"
 
@@ -120,7 +125,11 @@ const Contact = () => {
 
               <div>
 
+                <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
+
                 <input
+
+                  id="contact-email"
 
                   type="email"
 
@@ -155,17 +164,25 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div>
 
-              type="text"
+              <Label htmlFor="contact-company" className="sr-only">Company Name</Label>
 
-              name="company"
+              <input
 
-              placeholder="Company Name"
+                id="contact-company"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                type="text"
 
-            />
+                name="company"
+
+                placeholder="Company Name"
+
+                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+
+              />
+
+            </div>
 
 
 
@@ -173,7 +190,11 @@ const Contact = () => {
 
             <div>
 
+              <Label htmlFor="contact-message" className="sr-only">Tell us about your project...</Label>
+
               <textarea
+
+                id="contact-message"
 
                 name="message"
 
@@ -270,7 +291,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +305,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
