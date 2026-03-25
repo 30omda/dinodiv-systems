@@ -98,108 +98,22 @@ const Contact = () => {
             <div className="grid gap-5 sm:grid-cols-2">
 
 
-              <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-              </div>
+              <div className="space-y-1"><label htmlFor="c-n" className="sr-only">Name</label><input id="c-n" type="text" name="name" placeholder="Your Name" required className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" /></div>
 
 
 
-              <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
-              </div>
+              <div className="space-y-1"><label htmlFor="c-e" className="sr-only">Email</label><input id="c-e" type="email" name="email" placeholder="Email Address" required aria-invalid={!!state.errors?.getErrors("email")?.length} aria-describedby="c-e-e" className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" /><div id="c-e-e" role="alert"><ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-xs text-destructive" /></div></div>
 
 
             </div>
 
 
 
-            {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
+            <div className="space-y-1"><label htmlFor="c-c" className="sr-only">Company</label><input id="c-c" type="text" name="company" placeholder="Company Name" className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" /></div>
 
 
 
-            {/* Message */}
-
-            <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
-            </div>
+            <div className="space-y-1"><label htmlFor="c-m" className="sr-only">Message</label><textarea id="c-m" name="message" placeholder="Tell us about your project..." rows={5} required aria-invalid={!!state.errors?.getErrors("message")?.length} aria-describedby="c-m-e" className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" /><div id="c-m-e" role="alert"><ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-xs text-destructive" /></div></div>
 
 
 
@@ -265,21 +179,17 @@ const Contact = () => {
             className="space-y-6 lg:col-span-2"
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <Mail size={20} />
-              </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><Mail size={20} /></div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a href="mailto:contact@dinodiv.info" className="text-sm text-muted-foreground hover:text-primary focus-visible:ring-2 focus-visible:ring-primary rounded">contact@dinodiv.info</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <MessageCircle size={20} />
-              </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><MessageCircle size={20} /></div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex gap-1 text-sm text-muted-foreground"><a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="hover:text-primary focus-visible:ring-2 focus-visible:ring-primary rounded">+201028661605</a><span>/</span><a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="hover:text-primary focus-visible:ring-2 focus-visible:ring-primary rounded">+201125011939</a></div>
               </div>
             </div>
             <div className="flex items-start gap-4">
