@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -100,7 +103,11 @@ const Contact = () => {
 
               <div>
 
-                <input
+                <Label htmlFor="name" className="sr-only">Your Name</Label>
+
+                <Input
+
+                  id="name"
 
                   type="text"
 
@@ -110,7 +117,11 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  aria-required="true"
+
+                  aria-invalid={!!state.errors?.getErrors("name")?.length}
+
+                  className="h-auto py-3 bg-card"
 
                 />
 
@@ -120,7 +131,11 @@ const Contact = () => {
 
               <div>
 
-                <input
+                <Label htmlFor="email" className="sr-only">Email Address</Label>
+
+                <Input
+
+                  id="email"
 
                   type="email"
 
@@ -130,7 +145,11 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  aria-required="true"
+
+                  aria-invalid={!!state.errors?.getErrors("email")?.length}
+
+                  className="h-auto py-3 bg-card"
 
                 />
 
@@ -155,17 +174,27 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div>
 
-              type="text"
+              <Label htmlFor="company" className="sr-only">Company Name</Label>
 
-              name="company"
+              <Input
 
-              placeholder="Company Name"
+                id="company"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                type="text"
 
-            />
+                name="company"
+
+                placeholder="Company Name"
+
+                aria-invalid={!!state.errors?.getErrors("company")?.length}
+
+                className="h-auto py-3 bg-card"
+
+              />
+
+            </div>
 
 
 
@@ -173,7 +202,11 @@ const Contact = () => {
 
             <div>
 
-              <textarea
+              <Label htmlFor="message" className="sr-only">Message</Label>
+
+              <Textarea
+
+                id="message"
 
                 name="message"
 
@@ -183,7 +216,11 @@ const Contact = () => {
 
                 required
 
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                aria-required="true"
+
+                aria-invalid={!!state.errors?.getErrors("message")?.length}
+
+                className="resize-none py-3 bg-card"
 
               />
 
@@ -270,7 +307,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +321,27 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                    aria-label="Contact us on WhatsApp at +201028661605"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                    aria-label="Contact us on WhatsApp at +201125011939"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
