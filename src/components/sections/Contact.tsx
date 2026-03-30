@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -100,7 +101,11 @@ const Contact = () => {
 
               <div>
 
+                <Label htmlFor="name" className="sr-only">Your Name</Label>
+
                 <input
+
+                  id="name"
 
                   type="text"
 
@@ -120,7 +125,11 @@ const Contact = () => {
 
               <div>
 
+                <Label htmlFor="email" className="sr-only">Email Address</Label>
+
                 <input
+
+                  id="email"
 
                   type="email"
 
@@ -130,21 +139,29 @@ const Contact = () => {
 
                   required
 
+                  aria-invalid={!!state.errors?.getErrors("email")?.length}
+
+                  aria-describedby="email-error"
+
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
                 />
 
-                <ValidationError
+                <div id="email-error" role="alert">
 
-                  prefix="Email"
+                  <ValidationError
 
-                  field="email"
+                    prefix="Email"
 
-                  errors={state.errors}
+                    field="email"
 
-                  className="mt-1 text-xs text-destructive"
+                    errors={state.errors}
 
-                />
+                    className="mt-1 text-xs text-destructive"
+
+                  />
+
+                </div>
 
               </div>
 
@@ -155,17 +172,25 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div>
 
-              type="text"
+              <Label htmlFor="company" className="sr-only">Company Name</Label>
 
-              name="company"
+              <input
 
-              placeholder="Company Name"
+                id="company"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                type="text"
 
-            />
+                name="company"
+
+                placeholder="Company Name"
+
+                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+
+              />
+
+            </div>
 
 
 
@@ -173,7 +198,11 @@ const Contact = () => {
 
             <div>
 
+              <Label htmlFor="message" className="sr-only">Tell us about your project...</Label>
+
               <textarea
+
+                id="message"
 
                 name="message"
 
@@ -183,21 +212,29 @@ const Contact = () => {
 
                 required
 
+                aria-invalid={!!state.errors?.getErrors("message")?.length}
+
+                aria-describedby="message-error"
+
                 className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
               />
 
-              <ValidationError
+              <div id="message-error" role="alert">
 
-                prefix="Message"
+                <ValidationError
 
-                field="message"
+                  prefix="Message"
 
-                errors={state.errors}
+                  field="message"
 
-                className="mt-1 text-xs text-destructive"
+                  errors={state.errors}
 
-              />
+                  className="mt-1 text-xs text-destructive"
+
+                />
+
+              </div>
 
             </div>
 
@@ -270,7 +307,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary px-0.5"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +321,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary px-0.5"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary px-0.5"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
