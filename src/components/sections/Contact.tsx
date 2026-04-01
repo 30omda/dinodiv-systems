@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -100,15 +101,21 @@ const Contact = () => {
 
               <div>
 
+                <Label htmlFor="name" className="sr-only">Your Name</Label>
+
                 <input
 
                   type="text"
 
                   name="name"
 
+                  id="name"
+
                   placeholder="Your Name"
 
                   required
+
+                  aria-required="true"
 
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
@@ -120,15 +127,23 @@ const Contact = () => {
 
               <div>
 
+                <Label htmlFor="email" className="sr-only">Email Address</Label>
+
                 <input
 
                   type="email"
 
                   name="email"
 
+                  id="email"
+
                   placeholder="Email Address"
 
                   required
+
+                  aria-required="true"
+
+                  aria-invalid={!!state.errors?.getErrors("email")?.length}
 
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
@@ -155,17 +170,25 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div>
 
-              type="text"
+              <Label htmlFor="company" className="sr-only">Company Name</Label>
 
-              name="company"
+              <input
 
-              placeholder="Company Name"
+                type="text"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                name="company"
 
-            />
+                id="company"
+
+                placeholder="Company Name"
+
+                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+
+              />
+
+            </div>
 
 
 
@@ -173,15 +196,23 @@ const Contact = () => {
 
             <div>
 
+              <Label htmlFor="message" className="sr-only">Tell us about your project</Label>
+
               <textarea
 
                 name="message"
+
+                id="message"
 
                 placeholder="Tell us about your project..."
 
                 rows={5}
 
                 required
+
+                aria-required="true"
+
+                aria-invalid={!!state.errors?.getErrors("message")?.length}
 
                 className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
@@ -270,7 +301,13 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  aria-label="Send an email to contact@dinodiv.info"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +316,27 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary"
+                    aria-label="Contact us on WhatsApp at +201028661605"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary"
+                    aria-label="Contact us on WhatsApp at +201125011939"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
