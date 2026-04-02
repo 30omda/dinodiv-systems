@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessible Contact Form & Interactive Links]
+**Learning:** Replacing raw HTML inputs with semantic Shadcn UI components and explicit `<Label>` associations (via `htmlFor`/`id`) significantly improves screen reader navigation. Additionally, providing ARIA validation context (`aria-invalid`, `aria-describedby`) and wrapping error messages in `role="alert"` containers ensures accessibility compliance for async form feedback.
+**Action:** Always prefer semantic UI components over raw inputs, and ensure all static contact details (email, WhatsApp) are converted to actionable `mailto:` and `wa.me` links with clear focus indicators.
