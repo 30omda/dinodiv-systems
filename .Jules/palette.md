@@ -1,0 +1,3 @@
+## 2025-05-15 - [Interactive Contact Information]
+**Learning:** Converting static contact details (email, WhatsApp) into interactive links (`mailto:`, `wa.me/`) significantly improves the "micro-UX" by making information actionable. For multi-value contact fields (like dual WhatsApp numbers), using a wrapping container with `flex-wrap gap-x-2` ensures each link remains independently reachable and properly styled with focus states.
+**Action:** Always check contact sections for static text that should be interactive links. Use `transition-colors hover:text-primary` and `focus-visible:ring-1` for consistent, accessible styling.
