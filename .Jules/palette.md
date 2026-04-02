@@ -1,0 +1,3 @@
+## 2025-05-15 - [Interactive Contact Links]
+**Learning:** Converting static contact information (email, WhatsApp) into interactive links (`mailto:`, `wa.me/`) with proper focus and hover states significantly improves usability, especially on mobile. When multiple values are present (e.g., dual WhatsApp numbers), each should be wrapped in its own interactive element within a flex container to maintain accessibility and independent reachability.
+**Action:** Always check contact sections for static text and convert to interactive links with standard patterns (`mailto:`, `wa.me/`) and clear `focus-visible:ring` states.
