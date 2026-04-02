@@ -1,0 +1,3 @@
+## 2025-05-15 - Enhancing Form Accessibility with Shadcn and ARIA
+**Learning:** Raw HTML inputs often miss critical accessibility context (labels, error association). Integrating Shadcn `Label` with `useId` and explicit ARIA attributes (`aria-invalid`, `aria-describedby`) ensures screen readers correctly announce field purpose and validation errors. Additionally, using `role="alert"` on error containers improves real-time feedback.
+**Action:** Always prefer Shadcn UI components over raw inputs for forms. Ensure every field has a unique `id` linked to a `<Label htmlFor="...">` and programmatically link error messages using `aria-describedby`.
