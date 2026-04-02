@@ -270,7 +270,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a href="mailto:contact@dinodiv.info" className="rounded text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary px-0.5">contact@dinodiv.info</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +279,11 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="rounded transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary px-0.5" aria-label="WhatsApp +201028661605">+201028661605</a>
+                  <span>/</span>
+                  <a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="rounded transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary px-0.5" aria-label="WhatsApp +201125011939">+201125011939</a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
