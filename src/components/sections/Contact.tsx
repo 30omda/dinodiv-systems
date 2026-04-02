@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useId } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -10,6 +13,12 @@ import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
 import dinoLogo from "@/assets/dino-logo-dark.png";
 
 const Contact = () => {
+  const nameId = useId();
+  const emailId = useId();
+  const emailErrorId = useId();
+  const companyId = useId();
+  const messageId = useId();
+  const messageErrorId = useId();
 
   const [state, handleSubmit] = useForm("maqdbegw");
 
@@ -94,111 +103,75 @@ const Contact = () => {
 
 
             {/* Name + Email Grid */}
-
             <div className="grid gap-5 sm:grid-cols-2">
-
-
-              <div>
-
-                <input
-
+              <div className="space-y-2">
+                <Label htmlFor={nameId}>Your Name</Label>
+                <Input
+                  id={nameId}
                   type="text"
-
                   name="name"
-
                   placeholder="Your Name"
-
                   required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
+                  className="rounded-lg border-border bg-card px-4 py-3 text-sm placeholder:text-muted-foreground focus:ring-1 focus:ring-primary h-auto"
                 />
-
               </div>
 
-
-
-              <div>
-
-                <input
-
+              <div className="space-y-2">
+                <Label htmlFor={emailId}>Email Address</Label>
+                <Input
+                  id={emailId}
                   type="email"
-
                   name="email"
-
                   placeholder="Email Address"
-
                   required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
+                  aria-invalid={!!state.errors?.getErrors("email")?.length}
+                  aria-describedby={state.errors?.getErrors("email")?.length ? emailErrorId : undefined}
+                  className="rounded-lg border-border bg-card px-4 py-3 text-sm placeholder:text-muted-foreground focus:ring-1 focus:ring-primary h-auto"
                 />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+                <div id={emailErrorId} role="alert">
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
+                    className="mt-1 text-xs text-destructive"
+                  />
+                </div>
               </div>
-
-
             </div>
 
-
-
             {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
+            <div className="space-y-2">
+              <Label htmlFor={companyId}>Company Name</Label>
+              <Input
+                id={companyId}
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                className="rounded-lg border-border bg-card px-4 py-3 text-sm placeholder:text-muted-foreground focus:ring-1 focus:ring-primary h-auto"
+              />
+            </div>
 
             {/* Message */}
-
-            <div>
-
-              <textarea
-
+            <div className="space-y-2">
+              <Label htmlFor={messageId}>Tell us about your project</Label>
+              <Textarea
+                id={messageId}
                 name="message"
-
                 placeholder="Tell us about your project..."
-
                 rows={5}
-
                 required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
+                aria-invalid={!!state.errors?.getErrors("message")?.length}
+                aria-describedby={state.errors?.getErrors("message")?.length ? messageErrorId : undefined}
+                className="resize-none rounded-lg border-border bg-card px-4 py-3 text-sm placeholder:text-muted-foreground focus:ring-1 focus:ring-primary"
               />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+              <div id={messageErrorId} role="alert">
+                <ValidationError
+                  prefix="Message"
+                  field="message"
+                  errors={state.errors}
+                  className="mt-1 text-xs text-destructive"
+                />
+              </div>
             </div>
 
 
