@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving Form and Contact Link Accessibility
+**Learning:** In projects with highly spaced or inconsistent JSX formatting, a simple refactor can lead to large diffs. Stripping excessive empty lines before applying changes can help, but may still result in a noise-to-signal ratio that exceeds micro-UX line limits. Standardizing labels and converting static text to interactive links (mailto, wa.me) are high-impact, low-complexity wins for a11y and UX.
+**Action:** When a file has non-standard formatting, prioritize the UX fix with minimal whitespace disruption to keep the diff under the 50-line limit, unless a full reformat is explicitly requested or necessary for the change to be applied.
