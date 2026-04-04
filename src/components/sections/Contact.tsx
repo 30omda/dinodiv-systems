@@ -3,7 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-// import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
@@ -96,109 +98,28 @@ const Contact = () => {
             {/* Name + Email Grid */}
 
             <div className="grid gap-5 sm:grid-cols-2">
-
-
-              <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name</Label>
+                <Input id="name" type="text" name="name" placeholder="Your Name" required />
               </div>
-
-
-
-              <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input id="email" type="email" name="email" placeholder="name@example.com" required aria-invalid={state.errors?.getErrors("email")?.length > 0} aria-describedby="email-error" />
+                {state.errors?.getErrors("email")?.length > 0 && (
+                  <div id="email-error" role="alert"><ValidationError prefix="Email" field="email" errors={state.errors} className="text-xs text-destructive" /></div>
+                )}
               </div>
-
-
             </div>
-
-
-
-            {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
-
-            {/* Message */}
-
-            <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+            <div className="space-y-2">
+              <Label htmlFor="company">Company Name</Label>
+              <Input id="company" type="text" name="company" placeholder="Your Company" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Message</Label>
+              <Textarea id="message" name="message" placeholder="Tell us about your project..." rows={5} required className="resize-none" aria-invalid={state.errors?.getErrors("message")?.length > 0} aria-describedby="message-error" />
+              {state.errors?.getErrors("message")?.length > 0 && (
+                <div id="message-error" role="alert"><ValidationError prefix="Message" field="message" errors={state.errors} className="text-xs text-destructive" /></div>
+              )}
             </div>
 
 
@@ -270,7 +191,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a href="mailto:contact@dinodiv.info" className="rounded px-0.5 text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">contact@dinodiv.info</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +200,11 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2">
+                  <a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="rounded px-0.5 text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">+201028661605</a>
+                  <span className="text-sm text-muted-foreground">/</span>
+                  <a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="rounded px-0.5 text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary">+201125011939</a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
