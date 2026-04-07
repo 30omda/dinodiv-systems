@@ -1,0 +1,3 @@
+## 2025-05-15 - [Form Accessibility and Interactive Contact Info]
+**Learning:** Combining Shadcn UI components with Formspree's `ValidationError` requires explicit `aria-describedby` management and wrapping errors in `role="alert"` containers to ensure screen readers announce validation failures effectively. Additionally, converting static contact text into actionable links (mailto/wa.me) is a high-impact, low-effort UX improvement that directly reduces user friction.
+**Action:** Always replace raw inputs with accessible UI library components and ensure all contact identifiers (email/phone/WhatsApp) are interactive links with proper focus-visible styles.
