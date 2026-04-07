@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -98,9 +101,13 @@ const Contact = () => {
             <div className="grid gap-5 sm:grid-cols-2">
 
 
-              <div>
+              <div className="space-y-2">
 
-                <input
+                <Label htmlFor="full-name">Full Name</Label>
+
+                <Input
+
+                  id="full-name"
 
                   type="text"
 
@@ -110,7 +117,7 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  className="bg-card"
 
                 />
 
@@ -118,9 +125,13 @@ const Contact = () => {
 
 
 
-              <div>
+              <div className="space-y-2">
 
-                <input
+                <Label htmlFor="email-address">Email Address</Label>
+
+                <Input
+
+                  id="email-address"
 
                   type="email"
 
@@ -130,21 +141,31 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  aria-describedby={state.errors?.getErrors("email")?.length > 0 ? "email-error" : undefined}
+
+                  className="bg-card"
 
                 />
 
-                <ValidationError
+                {state.errors?.getErrors("email")?.length > 0 && (
 
-                  prefix="Email"
+                  <div id="email-error" role="alert">
 
-                  field="email"
+                    <ValidationError
 
-                  errors={state.errors}
+                      prefix="Email"
 
-                  className="mt-1 text-xs text-destructive"
+                      field="email"
 
-                />
+                      errors={state.errors}
+
+                      className="mt-1 text-xs text-destructive"
+
+                    />
+
+                  </div>
+
+                )}
 
               </div>
 
@@ -155,25 +176,37 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div className="space-y-2">
 
-              type="text"
+              <Label htmlFor="company-name">Company Name</Label>
 
-              name="company"
+              <Input
 
-              placeholder="Company Name"
+                id="company-name"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                type="text"
 
-            />
+                name="company"
+
+                placeholder="Company Name"
+
+                className="bg-card"
+
+              />
+
+            </div>
 
 
 
             {/* Message */}
 
-            <div>
+            <div className="space-y-2">
 
-              <textarea
+              <Label htmlFor="message-text">Message</Label>
+
+              <Textarea
+
+                id="message-text"
 
                 name="message"
 
@@ -183,21 +216,31 @@ const Contact = () => {
 
                 required
 
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                aria-describedby={state.errors?.getErrors("message")?.length > 0 ? "message-error" : undefined}
+
+                className="bg-card"
 
               />
 
-              <ValidationError
+              {state.errors?.getErrors("message")?.length > 0 && (
 
-                prefix="Message"
+                <div id="message-error" role="alert">
 
-                field="message"
+                  <ValidationError
 
-                errors={state.errors}
+                    prefix="Message"
 
-                className="mt-1 text-xs text-destructive"
+                    field="message"
 
-              />
+                    errors={state.errors}
+
+                    className="mt-1 text-xs text-destructive"
+
+                  />
+
+                </div>
+
+              )}
 
             </div>
 
@@ -270,7 +313,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +327,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
