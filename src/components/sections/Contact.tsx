@@ -3,7 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-// import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
@@ -93,112 +95,29 @@ const Contact = () => {
           >
 
 
-            {/* Name + Email Grid */}
-
             <div className="grid gap-5 sm:grid-cols-2">
-
-
-              <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
+              <div className="space-y-2">
+                <Label htmlFor="name">Your Name</Label>
+                <Input type="text" name="name" id="name" placeholder="Your Name" required />
               </div>
-
-
-
-              <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input type="email" name="email" id="email" placeholder="Email Address" required aria-invalid={!!state.errors?.getErrors("email")?.length} aria-describedby="email-error" />
+                <div id="email-error" role="alert">
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-xs text-destructive" />
+                </div>
               </div>
-
-
             </div>
-
-
-
-            {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
-
-            {/* Message */}
-
-            <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+            <div className="space-y-2">
+              <Label htmlFor="company">Company Name</Label>
+              <Input type="text" name="company" id="company" placeholder="Company Name" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Message</Label>
+              <Textarea name="message" id="message" placeholder="Tell us about your project..." rows={5} required aria-invalid={!!state.errors?.getErrors("message")?.length} aria-describedby="message-error" />
+              <div id="message-error" role="alert">
+                <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-xs text-destructive" />
+              </div>
             </div>
 
 
