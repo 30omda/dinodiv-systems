@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessible Form Fields & Interactive Contact Links]
+**Learning:** When using Shadcn UI Input/Textarea with Formspree's ValidationError, wrapping the error in a div with role="alert" and unique ID, then associating it via aria-describedby, ensures screen readers announce validation failures. Additionally, interactive links for WhatsApp (wa.me) should remove the '+' sign from the URI while keeping it in the display text for better UX.
+**Action:** Always wrap third-party validation errors in a role="alert" container and use surgical diffs to stay within the 50-line limit when refactoring to Shadcn components.
