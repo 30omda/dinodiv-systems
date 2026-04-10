@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessibility & Interactivity in Contact Forms]
+**Learning:** In landing pages with "placeholder-only" designs, using `sr-only` labels with `htmlFor` association provides critical accessibility for screen readers without compromising the visual aesthetic. Additionally, breaking down concatenated contact info (like multiple WhatsApp numbers) into individual actionable links significantly improves mobile usability.
+**Action:** Always prefer Shadcn UI `Label` and `Input` components over raw HTML to leverage built-in accessibility patterns, and ensure all contact strings (email, phone, WhatsApp) are converted to interactive protocols (`mailto:`, `wa.me/`).
