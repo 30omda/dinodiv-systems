@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -98,9 +101,13 @@ const Contact = () => {
             <div className="grid gap-5 sm:grid-cols-2">
 
 
-              <div>
+              <div className="space-y-2">
 
-                <input
+                <Label htmlFor="contact-name" className="sr-only">Your Name</Label>
+
+                <Input
+
+                  id="contact-name"
 
                   type="text"
 
@@ -110,7 +117,7 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  className="h-auto px-4 py-3 bg-card"
 
                 />
 
@@ -118,9 +125,13 @@ const Contact = () => {
 
 
 
-              <div>
+              <div className="space-y-2">
 
-                <input
+                <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
+
+                <Input
+
+                  id="contact-email"
 
                   type="email"
 
@@ -130,7 +141,7 @@ const Contact = () => {
 
                   required
 
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  className="h-auto px-4 py-3 bg-card"
 
                 />
 
@@ -155,25 +166,37 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
+            <div className="space-y-2">
 
-              type="text"
+              <Label htmlFor="contact-company" className="sr-only">Company Name</Label>
 
-              name="company"
+              <Input
 
-              placeholder="Company Name"
+                id="contact-company"
 
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                type="text"
 
-            />
+                name="company"
+
+                placeholder="Company Name"
+
+                className="h-auto px-4 py-3 bg-card"
+
+              />
+
+            </div>
 
 
 
             {/* Message */}
 
-            <div>
+            <div className="space-y-2">
 
-              <textarea
+              <Label htmlFor="contact-message" className="sr-only">Tell us about your project</Label>
+
+              <Textarea
+
+                id="contact-message"
 
                 name="message"
 
@@ -183,7 +206,7 @@ const Contact = () => {
 
                 required
 
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                className="bg-card px-4 py-3"
 
               />
 
@@ -270,7 +293,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -279,7 +307,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
