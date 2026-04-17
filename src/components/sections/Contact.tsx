@@ -3,7 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-// import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
@@ -96,109 +98,24 @@ const Contact = () => {
             {/* Name + Email Grid */}
 
             <div className="grid gap-5 sm:grid-cols-2">
-
-
               <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
+                <Label htmlFor="contact-name" className="sr-only">Your Name</Label>
+                <Input id="contact-name" type="text" name="name" placeholder="Your Name" required />
               </div>
-
-
-
               <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+                <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
+                <Input id="contact-email" type="email" name="email" placeholder="Email Address" required aria-invalid={state.errors?.getErrors("email")?.length > 0} />
+                <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-xs text-destructive" />
               </div>
-
-
             </div>
-
-
-
-            {/* Company */}
-
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
-
-            {/* Message */}
-
+            <div className="space-y-5">
+              <Label htmlFor="contact-company" className="sr-only">Company Name</Label>
+              <Input id="contact-company" type="text" name="company" placeholder="Company Name" />
+            </div>
             <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+              <Label htmlFor="contact-message" className="sr-only">Message</Label>
+              <Textarea id="contact-message" name="message" placeholder="Tell us about your project..." rows={5} required aria-invalid={state.errors?.getErrors("message")?.length > 0} />
+              <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-xs text-destructive" />
             </div>
 
 
@@ -270,16 +187,17 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a href="mailto:contact@dinodiv.info" className="text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5 outline-none">contact@dinodiv.info</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <MessageCircle size={20} />
-              </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><MessageCircle size={20} /></div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
+                  <a href="https://wa.me/201028661605" className="hover:text-primary focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5 outline-none transition-colors">+201028661605</a>/
+                  <a href="https://wa.me/201125011939" className="hover:text-primary focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5 outline-none transition-colors">+201125011939</a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
