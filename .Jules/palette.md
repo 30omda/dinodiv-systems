@@ -1,0 +1,3 @@
+## 2025-05-15 - Accessible Form Refactoring with Shadcn UI
+**Learning:** When refactoring "label-less" forms that rely on placeholders, using Shadcn UI's `Label` with the `sr-only` class provides essential context for screen readers without altering the visual design. Linking validation errors via `aria-describedby` and `role="alert"` ensures immediate feedback for assistive technologies.
+**Action:** Always prefer design system components (Input, Textarea, Label) over raw HTML tags to ensure consistent focus states and built-in accessibility features while maintaining the visual style with custom height/background classes (e.g., `h-12 bg-card`).

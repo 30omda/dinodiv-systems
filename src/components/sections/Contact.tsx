@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import dinoLogo from "@/assets/dino-logo-dark.png";
 
 const Contact = () => {
@@ -96,109 +99,39 @@ const Contact = () => {
             {/* Name + Email Grid */}
 
             <div className="grid gap-5 sm:grid-cols-2">
-
-
               <div>
-
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
-
+                <Label htmlFor="name" className="sr-only">Your Name</Label>
+                <Input id="name" name="name" placeholder="Your Name" required className="bg-card h-12" />
               </div>
-
-
-
               <div>
-
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
+                <Label htmlFor="email" className="sr-only">Email Address</Label>
+                <Input
+                  id="email" type="email" name="email" placeholder="Email Address" required className="bg-card h-12"
+                  aria-invalid={!!state.errors?.getErrors("email")?.length} aria-describedby="email-error"
                 />
-
-                <ValidationError
-
-                  prefix="Email"
-
-                  field="email"
-
-                  errors={state.errors}
-
-                  className="mt-1 text-xs text-destructive"
-
-                />
-
+                <div id="email-error" role="alert">
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-xs text-destructive" />
+                </div>
               </div>
-
-
             </div>
 
 
 
             {/* Company */}
 
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
-
-
-
-            {/* Message */}
-
             <div>
-
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
+              <Label htmlFor="company" className="sr-only">Company Name</Label>
+              <Input id="company" name="company" placeholder="Company Name" className="bg-card h-12" />
+            </div>
+            <div>
+              <Label htmlFor="message" className="sr-only">Message</Label>
+              <Textarea
+                id="message" name="message" placeholder="Tell us about your project..." rows={5} required
+                className="bg-card min-h-[120px]" aria-invalid={!!state.errors?.getErrors("message")?.length} aria-describedby="message-error"
               />
-
-              <ValidationError
-
-                prefix="Message"
-
-                field="message"
-
-                errors={state.errors}
-
-                className="mt-1 text-xs text-destructive"
-
-              />
-
+              <div id="message-error" role="alert">
+                <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-xs text-destructive" />
+              </div>
             </div>
 
 
