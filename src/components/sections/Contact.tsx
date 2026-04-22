@@ -3,7 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-// import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, MessageCircle, Calendar, Loader2 } from "lucide-react";
@@ -100,19 +102,7 @@ const Contact = () => {
 
               <div>
 
-                <input
-
-                  type="text"
-
-                  name="name"
-
-                  placeholder="Your Name"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
+                <Label htmlFor="name" className="sr-only">Name</Label><Input id="name" name="name" placeholder="Your Name" required className="h-auto rounded-lg border-border bg-card px-4 py-3" />
 
               </div>
 
@@ -120,19 +110,7 @@ const Contact = () => {
 
               <div>
 
-                <input
-
-                  type="email"
-
-                  name="email"
-
-                  placeholder="Email Address"
-
-                  required
-
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-                />
+                <Label htmlFor="email" className="sr-only">Email</Label><Input id="email" type="email" name="email" placeholder="Email Address" required aria-invalid={state.errors?.getErrors("email")?.length > 0} className="h-auto rounded-lg border-border bg-card px-4 py-3" />
 
                 <ValidationError
 
@@ -155,17 +133,7 @@ const Contact = () => {
 
             {/* Company */}
 
-            <input
-
-              type="text"
-
-              name="company"
-
-              placeholder="Company Name"
-
-              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-            />
+            <Label htmlFor="company" className="sr-only">Company</Label><Input id="company" name="company" placeholder="Company Name" className="h-auto rounded-lg border-border bg-card px-4 py-3" />
 
 
 
@@ -173,19 +141,7 @@ const Contact = () => {
 
             <div>
 
-              <textarea
-
-                name="message"
-
-                placeholder="Tell us about your project..."
-
-                rows={5}
-
-                required
-
-                className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
-              />
+              <Label htmlFor="message" className="sr-only">Message</Label><Textarea id="message" name="message" placeholder="Tell us about your project..." rows={5} required aria-invalid={state.errors?.getErrors("message")?.length > 0} className="resize-none rounded-lg border-border bg-card px-4 py-3" />
 
               <ValidationError
 
@@ -279,7 +235,11 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex gap-2 text-sm text-muted-foreground">
+                  <a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">+201028661605</a>
+                  <span>/</span>
+                  <a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">+201125011939</a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -292,6 +252,7 @@ const Contact = () => {
                   href="https://cal.com/diodiv"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Book a meeting with DinoDiv"
                   className="text-sm text-primary hover:underline"
                 >
                   Let's Talk →
