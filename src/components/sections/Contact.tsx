@@ -265,21 +265,19 @@ const Contact = () => {
             className="space-y-6 lg:col-span-2"
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <Mail size={20} />
-              </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><Mail size={20} /></div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a href="mailto:contact@dinodiv.info" className="text-sm text-muted-foreground transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded">contact@dinodiv.info</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <MessageCircle size={20} />
-              </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><MessageCircle size={20} /></div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="text-sm text-muted-foreground">
+                  <a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5 -mx-0.5">+201028661605</a> / <a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-0.5 -mx-0.5">+201125011939</a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
