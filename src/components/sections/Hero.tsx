@@ -1,15 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import dinoLogo from "@/assets/dino-logo.png";
 
 const Hero = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="relative min-h-screen overflow-hidden pt-20">
       {/* Background glow */}
       <div className="absolute inset-0 bg-radial-green" />
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px]"
-        animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+        animate={shouldReduceMotion ? {} : { scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
@@ -71,7 +73,7 @@ const Hero = () => {
               src={dinoLogo}
               alt="DinoDiv — Software Development Company Logo"
               className="relative z-10 h-64 w-64 object-contain sm:h-80 sm:w-80 lg:h-96 lg:w-96"
-              animate={{ y: [0, -12, 0] }}
+              animate={shouldReduceMotion ? {} : { y: [0, -12, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>

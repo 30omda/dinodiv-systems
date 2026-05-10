@@ -1,14 +1,16 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Services from "@/components/sections/Services";
-import Projects from "@/components/sections/Projects";
-import Testimonials from "@/components/sections/Testimonials";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import TeamSection from "@/components/team/TeamSection";
-import CTASection from "@/components/sections/CTASection";
-import Contact from "@/components/sections/Contact";
-import Footer from "@/components/sections/Footer";
+
+const About = lazy(() => import("@/components/sections/About"));
+const Services = lazy(() => import("@/components/sections/Services"));
+const Projects = lazy(() => import("@/components/sections/Projects"));
+const Testimonials = lazy(() => import("@/components/sections/Testimonials"));
+const WhyChooseUs = lazy(() => import("@/components/sections/WhyChooseUs"));
+const TeamSection = lazy(() => import("@/components/team/TeamSection"));
+const CTASection = lazy(() => import("@/components/sections/CTASection"));
+const Contact = lazy(() => import("@/components/sections/Contact"));
+const Footer = lazy(() => import("@/components/sections/Footer"));
 
 const Index = () => {
   return (
@@ -16,16 +18,20 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Services />
-        <Projects />
-        <Testimonials />
-        <WhyChooseUs />
-        <TeamSection />
-        <CTASection />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Services />
+          <Projects />
+          <Testimonials />
+          <WhyChooseUs />
+          <TeamSection />
+          <CTASection />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -20,9 +18,9 @@ const Contact = () => {
         position: "top-right",
         duration: 4000,
         icon: (
-          <img 
-            src={dinoLogo} 
-            alt="DinoDiv Logo" 
+          <img
+            src={dinoLogo}
+            alt="DinoDiv Logo"
             className="h-20 w-20 object-contain"
           />
         ),
@@ -89,6 +87,8 @@ const Contact = () => {
             initial={{ opacity: 0, x: -30 }}
 
             whileInView={{ opacity: 1, x: 0 }}
+
+            viewport={{ once: true, margin: "-100px" }}
 
           >
 
