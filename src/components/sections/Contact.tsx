@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 // import { Loader2 } from "lucide-react";
 import { sileo } from "sileo";
 import { useForm, ValidationError } from "@formspree/react";
@@ -99,11 +100,10 @@ const Contact = () => {
 
 
               <div>
-
+                <Label htmlFor="contact-name" className="sr-only">Full Name</Label>
                 <input
-
+                  id="contact-name"
                   type="text"
-
                   name="name"
 
                   placeholder="Your Name"
@@ -119,11 +119,10 @@ const Contact = () => {
 
 
               <div>
-
+                <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
                 <input
-
+                  id="contact-email"
                   type="email"
-
                   name="email"
 
                   placeholder="Email Address"
@@ -154,11 +153,10 @@ const Contact = () => {
 
 
             {/* Company */}
-
+            <Label htmlFor="contact-company" className="sr-only">Company Name</Label>
             <input
-
+              id="contact-company"
               type="text"
-
               name="company"
 
               placeholder="Company Name"
@@ -170,11 +168,10 @@ const Contact = () => {
 
 
             {/* Message */}
-
             <div>
-
+              <Label htmlFor="contact-message" className="sr-only">Message</Label>
               <textarea
-
+                id="contact-message"
                 name="message"
 
                 placeholder="Tell us about your project..."
