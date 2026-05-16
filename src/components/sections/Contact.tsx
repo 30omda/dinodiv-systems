@@ -124,7 +124,7 @@ const Contact = () => {
                   id="contact-email"
                   type="email"
                   name="email"
-
+                  aria-invalid={state.errors?.getErrors("email")?.length > 0 ? "true" : undefined}
                   placeholder="Email Address"
 
                   required
@@ -173,7 +173,7 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-
+                aria-invalid={state.errors?.getErrors("message")?.length > 0 ? "true" : undefined}
                 placeholder="Tell us about your project..."
 
                 rows={5}
@@ -267,7 +267,9 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <p className="text-sm text-muted-foreground">
+                  <a href="mailto:contact@dinodiv.info" className="px-1 -ml-1 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded">contact@dinodiv.info</a>
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +278,9 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <p className="text-sm text-muted-foreground">
+                  <a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="px-1 -mx-1 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded">+201028661605</a> / <a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="px-1 -mx-1 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded">+201125011939</a>
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
