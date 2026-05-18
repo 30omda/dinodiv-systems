@@ -103,6 +103,7 @@ const Contact = () => {
                 <Label htmlFor="contact-name" className="sr-only">Full Name</Label>
                 <input
                   id="contact-name"
+                  aria-invalid={state.errors?.getFieldErrors("name")?.length > 0 ? "true" : undefined}
                   type="text"
                   name="name"
 
@@ -122,6 +123,7 @@ const Contact = () => {
                 <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
                 <input
                   id="contact-email"
+                  aria-invalid={state.errors?.getFieldErrors("email")?.length > 0 ? "true" : undefined}
                   type="email"
                   name="email"
 
@@ -156,6 +158,7 @@ const Contact = () => {
             <Label htmlFor="contact-company" className="sr-only">Company Name</Label>
             <input
               id="contact-company"
+              aria-invalid={state.errors?.getFieldErrors("company")?.length > 0 ? "true" : undefined}
               type="text"
               name="company"
 
@@ -172,6 +175,7 @@ const Contact = () => {
               <Label htmlFor="contact-message" className="sr-only">Message</Label>
               <textarea
                 id="contact-message"
+                aria-invalid={state.errors?.getFieldErrors("message")?.length > 0 ? "true" : undefined}
                 name="message"
 
                 placeholder="Tell us about your project..."
@@ -267,7 +271,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="px-1 -ml-1 text-sm text-muted-foreground transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +285,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-1 -mx-1 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                  >
+                    +201028661605
+                  </a>
+                  {" / "}
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-1 -mx-1 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -289,7 +316,7 @@ const Contact = () => {
                   href="https://cal.com/diodiv"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="px-1 -ml-1 text-sm text-primary transition-colors hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                 >
                   Let's Talk →
                 </a>
