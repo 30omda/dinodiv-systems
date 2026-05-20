@@ -105,7 +105,7 @@ const Contact = () => {
                   id="contact-name"
                   type="text"
                   name="name"
-
+                  aria-invalid={state.errors?.getFieldErrors("name")?.length > 0 ? "true" : undefined}
                   placeholder="Your Name"
 
                   required
@@ -124,7 +124,7 @@ const Contact = () => {
                   id="contact-email"
                   type="email"
                   name="email"
-
+                  aria-invalid={state.errors?.getFieldErrors("email")?.length > 0 ? "true" : undefined}
                   placeholder="Email Address"
 
                   required
@@ -158,7 +158,7 @@ const Contact = () => {
               id="contact-company"
               type="text"
               name="company"
-
+              aria-invalid={state.errors?.getFieldErrors("company")?.length > 0 ? "true" : undefined}
               placeholder="Company Name"
 
               className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
@@ -173,7 +173,7 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-
+                aria-invalid={state.errors?.getFieldErrors("message")?.length > 0 ? "true" : undefined}
                 placeholder="Tell us about your project..."
 
                 rows={5}
@@ -267,7 +267,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 -ml-1"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +281,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap items-center text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 -ml-1"
+                  >
+                    +201028661605
+                  </a>
+                  <span className="px-1">/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
