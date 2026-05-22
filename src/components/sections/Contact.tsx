@@ -124,7 +124,7 @@ const Contact = () => {
                   id="contact-email"
                   type="email"
                   name="email"
-
+                  aria-invalid={state.errors?.getFieldErrors("email")?.length > 0 ? "true" : undefined}
                   placeholder="Email Address"
 
                   required
@@ -173,7 +173,7 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-
+                aria-invalid={state.errors?.getFieldErrors("message")?.length > 0 ? "true" : undefined}
                 placeholder="Tell us about your project..."
 
                 rows={5}
@@ -267,7 +267,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="px-1 -ml-1 rounded text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +281,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-1 -ml-1 rounded hover:text-primary transition-colors"
+                  >
+                    +201028661605
+                  </a>
+                  <span className="px-1">/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-1 rounded hover:text-primary transition-colors"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
