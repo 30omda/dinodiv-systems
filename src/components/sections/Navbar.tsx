@@ -65,6 +65,7 @@ const Navbar = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           className="flex items-center gap-3"
+          aria-label="DinoDiv - Back to top"
         >
           <img
             src={dinoLogo}
