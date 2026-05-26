@@ -105,18 +105,12 @@ const Contact = () => {
                   id="contact-name"
                   type="text"
                   name="name"
-
                   placeholder="Your Name"
-
                   required
-
+                  aria-invalid={state.errors?.getFieldErrors("name")?.length > 0 ? "true" : undefined}
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
                 />
-
               </div>
-
-
 
               <div>
                 <Label htmlFor="contact-email" className="sr-only">Email Address</Label>
@@ -124,13 +118,10 @@ const Contact = () => {
                   id="contact-email"
                   type="email"
                   name="email"
-
                   placeholder="Email Address"
-
                   required
-
+                  aria-invalid={state.errors?.getFieldErrors("email")?.length > 0 ? "true" : undefined}
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
                 />
 
                 <ValidationError
@@ -158,11 +149,9 @@ const Contact = () => {
               id="contact-company"
               type="text"
               name="company"
-
               placeholder="Company Name"
-
+              aria-invalid={state.errors?.getFieldErrors("company")?.length > 0 ? "true" : undefined}
               className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
             />
 
 
@@ -173,15 +162,11 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-
                 placeholder="Tell us about your project..."
-
                 rows={5}
-
                 required
-
+                aria-invalid={state.errors?.getFieldErrors("message")?.length > 0 ? "true" : undefined}
                 className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
               />
 
               <ValidationError
@@ -267,7 +252,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="px-1 -ml-1 rounded text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary outline-none"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +266,21 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap items-center text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    className="px-1 -ml-1 rounded text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary outline-none"
+                  >
+                    +201028661605
+                  </a>
+                  <span className="px-1">/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    className="px-1 rounded text-sm text-muted-foreground transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary outline-none"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
