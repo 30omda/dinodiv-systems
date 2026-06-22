@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 // TODO: Light/Dark mode temporarily disabled for branding consistency
 // Can be re-enabled in future release
@@ -65,6 +65,7 @@ const Navbar = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           className="flex items-center gap-3"
+          aria-label="DinoDiv - Back to top"
         >
           <img
             src={dinoLogo}
@@ -110,50 +111,56 @@ const Navbar = () => {
           className="text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="border-t border-border bg-background px-6 pb-6 md:hidden"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => scrollTo(e, link.href)}
-              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
-                activeSection === link.id ? "text-primary" : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-          {/* TODO: Re-enable theme toggle when light mode branding is finalized
-          <div className="flex items-center gap-3 py-3">
-            <button
-              onClick={toggleTheme}
-              className="rounded-lg border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          </div>
-          */}
-          <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, "#contact")}
-            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="border-t border-border bg-background px-6 pb-6 md:hidden"
           >
-            Start Your Project
-          </a>
-        </motion.div>
-      )}
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => scrollTo(e, link.href)}
+                className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
+                  activeSection === link.id ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+            {/* TODO: Re-enable theme toggle when light mode branding is finalized
+            <div className="flex items-center gap-3 py-3">
+              <button
+                onClick={toggleTheme}
+                className="rounded-lg border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+            </div>
+            */}
+            <a
+              href="#contact"
+              onClick={(e) => scrollTo(e, "#contact")}
+              className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            >
+              Start Your Project
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
