@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 // TODO: Light/Dark mode temporarily disabled for branding consistency
 // Can be re-enabled in future release
@@ -64,7 +64,8 @@ const Navbar = () => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-3"
+          aria-label="DinoDiv - Back to top"
+          className="flex items-center gap-3 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary p-1 -m-1"
         >
           <img
             src={dinoLogo}
@@ -80,7 +81,7 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`rounded-md px-1 -mx-1 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary ${
                 activeSection === link.id ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -99,7 +100,7 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 glow-green"
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 glow-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             Start Your Project
           </a>
@@ -107,33 +108,40 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="text-foreground md:hidden"
+          type="button"
+          className="rounded-md p-2 text-foreground transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="border-t border-border bg-background px-6 pb-6 md:hidden"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => scrollTo(e, link.href)}
-              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
-                activeSection === link.id ? "text-primary" : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="border-t border-border bg-background px-6 pb-6 md:hidden"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => scrollTo(e, link.href)}
+                className={`block rounded-md py-3 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary ${
+                  activeSection === link.id ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
           {/* TODO: Re-enable theme toggle when light mode branding is finalized
           <div className="flex items-center gap-3 py-3">
             <button
@@ -148,12 +156,13 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             Start Your Project
           </a>
         </motion.div>
       )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
