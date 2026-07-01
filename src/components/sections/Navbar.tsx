@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 // TODO: Light/Dark mode temporarily disabled for branding consistency
 // Can be re-enabled in future release
@@ -60,6 +60,7 @@ const Navbar = () => {
       <div className="container flex h-20 items-center justify-between px-6">
         <a
           href="#"
+          aria-label="DinoDiv - Back to top"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -107,7 +108,10 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="text-foreground md:hidden"
+          type="button"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          className="text-foreground md:hidden p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md transition-all"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -116,12 +120,15 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="border-t border-border bg-background px-6 pb-6 md:hidden"
-        >
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="border-t border-border bg-background px-6 pb-6 md:hidden"
+          >
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -152,8 +159,9 @@ const Navbar = () => {
           >
             Start Your Project
           </a>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
