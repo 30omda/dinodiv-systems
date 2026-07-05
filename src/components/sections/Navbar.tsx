@@ -64,7 +64,8 @@ const Navbar = () => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-3"
+          aria-label="DinoDiv - Home"
+          className="flex items-center gap-3 transition-all rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <img
             src={dinoLogo}
@@ -80,7 +81,7 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`px-1 -ml-1 rounded-md text-sm font-medium transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                 activeSection === link.id ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -99,7 +100,7 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 glow-green"
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary glow-green"
           >
             Start Your Project
           </a>
@@ -107,9 +108,12 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="text-foreground md:hidden"
+          type="button"
+          className="p-2 text-foreground transition-all rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -118,6 +122,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <motion.div
+          id="mobile-menu"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="border-t border-border bg-background px-6 pb-6 md:hidden"
@@ -127,7 +132,7 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
+              className={`block px-2 -mx-2 py-3 rounded-md text-sm font-medium transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                 activeSection === link.id ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -148,7 +153,7 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             Start Your Project
           </a>
