@@ -64,7 +64,8 @@ const Navbar = () => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md transition-all"
+          aria-label="DinoDiv - Home"
         >
           <img
             src={dinoLogo}
@@ -80,7 +81,7 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-sm font-medium transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1 -ml-1 ${
                 activeSection === link.id ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -99,7 +100,7 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 glow-green"
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 glow-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ring-offset-background"
           >
             Start Your Project
           </a>
@@ -107,7 +108,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="text-foreground md:hidden"
+          className="text-foreground md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -127,7 +128,7 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href)}
-              className={`block py-3 text-sm font-medium transition-colors hover:text-primary ${
+              className={`block py-3 text-sm font-medium transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2 -mx-2 ${
                 activeSection === link.id ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -148,7 +149,7 @@ const Navbar = () => {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            className="mt-2 block rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ring-offset-background"
           >
             Start Your Project
           </a>
