@@ -129,6 +129,8 @@ const Contact = () => {
 
                   required
 
+                  aria-invalid={state.errors?.filter(e => e.field === "email").length > 0 ? "true" : undefined}
+
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
                 />
@@ -179,6 +181,8 @@ const Contact = () => {
                 rows={5}
 
                 required
+
+                aria-invalid={state.errors?.filter(e => e.field === "message").length > 0 ? "true" : undefined}
 
                 className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
 
@@ -267,7 +271,14 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <p className="text-sm text-muted-foreground">
+                  <a
+                    href="mailto:contact@dinodiv.info"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary hover:underline"
+                  >
+                    contact@dinodiv.info
+                  </a>
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +287,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <p className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary hover:underline"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary hover:underline"
+                  >
+                    +201125011939
+                  </a>
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
