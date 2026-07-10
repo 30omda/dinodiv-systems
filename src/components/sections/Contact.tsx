@@ -105,7 +105,7 @@ const Contact = () => {
                   id="contact-name"
                   type="text"
                   name="name"
-
+                  aria-invalid={state.errors?.filter(e => e.field === "name").length > 0 ? "true" : undefined}
                   placeholder="Your Name"
 
                   required
@@ -124,7 +124,7 @@ const Contact = () => {
                   id="contact-email"
                   type="email"
                   name="email"
-
+                  aria-invalid={state.errors?.filter(e => e.field === "email").length > 0 ? "true" : undefined}
                   placeholder="Email Address"
 
                   required
@@ -158,7 +158,7 @@ const Contact = () => {
               id="contact-company"
               type="text"
               name="company"
-
+              aria-invalid={state.errors?.filter(e => e.field === "company").length > 0 ? "true" : undefined}
               placeholder="Company Name"
 
               className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
@@ -173,7 +173,7 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-
+                aria-invalid={state.errors?.filter(e => e.field === "message").length > 0 ? "true" : undefined}
                 placeholder="Tell us about your project..."
 
                 rows={5}
@@ -267,7 +267,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="inline-block px-1 -ml-1 rounded-md transition-all text-sm text-muted-foreground hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +281,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -289,7 +312,7 @@ const Contact = () => {
                   href="https://cal.com/diodiv"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="inline-block px-1 -ml-1 rounded-md transition-all text-sm text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   Let's Talk →
                 </a>
