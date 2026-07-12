@@ -5,3 +5,7 @@
 ## 2025-05-13 - Smooth and Accessible Navigation Patterns
 **Learning:** For animated mobile menus, combining `AnimatePresence` with `aria-expanded` and `aria-controls` creates a cohesive experience for all users. Adding `focus-visible` rings with `rounded-md` and `transition-all` ensures keyboard navigation is visually clear and consistent with the site's design language.
 **Action:** Always synchronize ARIA states with animation lifecycles and ensure all interactive elements in the navigation have explicit focus states.
+
+## 2025-05-14 - Functional and Accessible Footer Branding
+**Learning:** Transforming a static footer logo into a "Back to top" link provides immediate functional value to users at the end of a long landing page. Implementing this with 'aria-label', 'focus-visible' rings, and padding/negative margin offsets (e.g., 'px-1 -ml-1') ensures the branding is both interactive and accessible without causing visual layout shifts or disrupting alignment.
+**Action:** Always ensure footer branding is interactive and adheres to the same accessibility and smooth-scrolling standards as the primary navigation.
