@@ -5,3 +5,7 @@
 ## 2025-05-13 - Smooth and Accessible Navigation Patterns
 **Learning:** For animated mobile menus, combining `AnimatePresence` with `aria-expanded` and `aria-controls` creates a cohesive experience for all users. Adding `focus-visible` rings with `rounded-md` and `transition-all` ensures keyboard navigation is visually clear and consistent with the site's design language.
 **Action:** Always synchronize ARIA states with animation lifecycles and ensure all interactive elements in the navigation have explicit focus states.
+
+## 2025-05-14 - Global Footer Navigation Consistency
+**Learning:** In a multi-page architecture, the footer logo MUST link to the home page (`/`) rather than just scrolling to top, to meet standard user expectations. Combining this with smooth-scroll logic allows for a refined experience on the home page while maintaining robust navigation from sub-pages like Terms or Privacy.
+**Action:** Ensure brand logos in the footer are global navigation elements that point to root, even when implementing single-page scroll enhancements.

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import Footer from "@/components/sections/Footer";
 
 const Privacy = () => {
   useEffect(() => {
@@ -143,6 +144,7 @@ const Privacy = () => {
           </section>
         </motion.article>
       </div>
+      <Footer />
     </div>
   );
 };
