@@ -21,7 +21,7 @@ const Terms = () => {
       <div className="container mx-auto max-w-3xl px-6 py-24">
         <Link
           to="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+          className="mb-8 px-2 -mx-2 inline-flex items-center gap-2 text-sm text-muted-foreground transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
         >
           <ArrowLeft size={16} /> Back to Home
         </Link>
