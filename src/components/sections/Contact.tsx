@@ -266,8 +266,15 @@ const Contact = () => {
                 <Mail size={20} />
               </div>
               <div>
-                <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <p className="text-sm font-medium mb-1">Email</p>
+                <div className="flex flex-wrap items-center gap-1">
+                  <a
+                    href="mailto:contact@dinodiv.info"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    contact@dinodiv.info
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -275,8 +282,28 @@ const Contact = () => {
                 <MessageCircle size={20} />
               </div>
               <div>
-                <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <p className="text-sm font-medium mb-1">WhatsApp</p>
+                <div className="flex flex-wrap items-center gap-1">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted-foreground hover:text-primary hover:underline"
+                    aria-label="WhatsApp with DinoDiv: +201028661605"
+                  >
+                    +201028661605
+                  </a>
+                  <span className="text-sm text-muted-foreground px-1">/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted-foreground hover:text-primary hover:underline"
+                    aria-label="WhatsApp with DinoDiv: +201125011939"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -284,15 +311,17 @@ const Contact = () => {
                 <Calendar size={20} />
               </div>
               <div>
-                <p className="text-sm font-medium">Book a Meeting</p>
-                <a
-                  href="https://cal.com/diodiv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Let's Talk →
-                </a>
+                <p className="text-sm font-medium mb-1">Book a Meeting</p>
+                <div className="flex flex-wrap items-center gap-1">
+                  <a
+                    href="https://cal.com/diodiv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-primary hover:underline"
+                  >
+                    Let's Talk →
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
