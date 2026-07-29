@@ -5,3 +5,7 @@
 ## 2025-05-13 - Smooth and Accessible Navigation Patterns
 **Learning:** For animated mobile menus, combining `AnimatePresence` with `aria-expanded` and `aria-controls` creates a cohesive experience for all users. Adding `focus-visible` rings with `rounded-md` and `transition-all` ensures keyboard navigation is visually clear and consistent with the site's design language.
 **Action:** Always synchronize ARIA states with animation lifecycles and ensure all interactive elements in the navigation have explicit focus states.
+
+## 2025-05-14 - Comprehensive Brand Logo and Navigation Focus Consistency
+**Learning:** Wrapping static footer logos in active `<Link>` elements that scroll to top smoothly not only mirrors navbar branding behaviors but provides a complete page navigation landmark for keyboard users.
+**Action:** Always wrap branding/logos in semantic, focus-visible links with explicit smooth-scrolling behavior to support complete UX expectations.
