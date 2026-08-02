@@ -10,10 +10,16 @@ const Footer = () => {
         </div>
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to="/terms" className="transition-colors hover:text-primary">
+            <Link
+              to="/terms"
+              className="px-2 -mx-2 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary"
+            >
               Terms & Conditions
             </Link>
-            <Link to="/privacy" className="transition-colors hover:text-primary">
+            <Link
+              to="/privacy"
+              className="px-2 -mx-2 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary"
+            >
               Privacy Policy
             </Link>
           </div>
