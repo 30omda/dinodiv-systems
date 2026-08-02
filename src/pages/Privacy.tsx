@@ -21,7 +21,7 @@ const Privacy = () => {
       <div className="container mx-auto max-w-3xl px-6 py-24">
         <Link
           to="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+          className="mb-8 inline-flex items-center gap-2 px-2 -mx-2 rounded-md transition-all text-sm text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:text-primary"
         >
           <ArrowLeft size={16} /> Back to Home
         </Link>
@@ -132,10 +132,10 @@ const Privacy = () => {
               <p>
                 For privacy-related inquiries, contact us at{" "}
                 <a
-                  href="mailto:dinodiv.info@gmail.com"
-                  className="text-primary hover:underline"
+                  href="mailto:contact@dinodiv.info"
+                  className="inline-block px-1 -ml-1 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-primary hover:underline"
                 >
-                  dinodiv.info@gmail.com
+                  contact@dinodiv.info
                 </a>
                 .
               </p>
