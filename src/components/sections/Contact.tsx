@@ -267,7 +267,14 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <div className="flex flex-wrap items-center gap-1">
+                  <a
+                    href="mailto:contact@dinodiv.info"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    contact@dinodiv.info
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +283,27 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted-foreground hover:text-primary hover:underline"
+                    aria-label="Contact DinoDiv on WhatsApp at +201028661605"
+                  >
+                    +201028661605
+                  </a>
+                  <span>/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-1 -ml-1 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted-foreground hover:text-primary hover:underline"
+                    aria-label="Contact DinoDiv on WhatsApp at +201125011939"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
