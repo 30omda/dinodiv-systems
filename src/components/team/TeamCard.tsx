@@ -50,7 +50,7 @@ const TeamCard = ({ member, index }: TeamCardProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${member.name} LinkedIn`}
-            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all"
           >
             <Linkedin size={18} />
           </a>
@@ -61,7 +61,7 @@ const TeamCard = ({ member, index }: TeamCardProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${member.name} GitHub`}
-            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all"
           >
             <Github size={18} />
           </a>
@@ -72,7 +72,7 @@ const TeamCard = ({ member, index }: TeamCardProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${member.name} Portfolio`}
-            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all"
           >
             <Globe size={18} />
           </a>
