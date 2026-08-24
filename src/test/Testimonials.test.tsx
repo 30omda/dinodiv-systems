@@ -1,0 +1,17 @@
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import Testimonials from "../components/sections/Testimonials";
+
+describe("Testimonials component", () => {
+  it("renders star ratings with accessible roles and labels", () => {
+    render(<Testimonials />);
+    const starContainers = screen.getAllByRole("img", { name: "5 out of 5 stars" });
+    expect(starContainers.length).toBeGreaterThan(0);
+  });
+
+  it("renders quote paragraphs with dir='auto' attribute", () => {
+    render(<Testimonials />);
+    const quotes = screen.getAllByText(/A top-tier software partner!/i);
+    expect(quotes[0]).toHaveAttribute("dir", "auto");
+  });
+});
