@@ -53,16 +53,24 @@ const Testimonials = () => {
               className="flex flex-col justify-between rounded-xl border border-border bg-card p-8 transition-all hover-glow"
             >
               <div>
-                <div className="mb-4 flex gap-1">
+                <div
+                  className="mb-4 flex gap-1"
+                  role="img"
+                  aria-label={`${t.stars} out of 5 stars`}
+                >
                   {Array.from({ length: t.stars }).map((_, s) => (
                     <Star
                       key={s}
                       size={16}
                       className="fill-primary text-primary"
+                      aria-hidden="true"
                     />
                   ))}
                 </div>
-                <p className="mb-6 text-sm leading-relaxed text-muted-foreground italic">
+                <p
+                  dir="auto"
+                  className="mb-6 text-sm leading-relaxed text-muted-foreground italic"
+                >
                   "{t.quote}"
                 </p>
               </div>
