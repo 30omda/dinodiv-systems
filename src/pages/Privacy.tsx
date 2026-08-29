@@ -18,7 +18,7 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto max-w-3xl px-6 py-24">
+      <main id="main-content" tabIndex={-1} className="container mx-auto max-w-3xl px-6 py-24 outline-none">
         <Link
           to="/"
           className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
@@ -142,7 +142,7 @@ const Privacy = () => {
             </div>
           </section>
         </motion.article>
-      </div>
+      </main>
     </div>
   );
 };
