@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1} className="outline-none">
         <Hero />
         <About />
         <Services />
