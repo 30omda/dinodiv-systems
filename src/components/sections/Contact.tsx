@@ -267,7 +267,12 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a
+                  href="mailto:contact@dinodiv.info"
+                  className="text-sm text-muted-foreground px-1 -ml-1 rounded transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
+                >
+                  contact@dinodiv.info
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +281,25 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <div className="flex flex-wrap items-center text-sm text-muted-foreground">
+                  <a
+                    href="https://wa.me/201028661605"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-1 -ml-1 rounded transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
+                  >
+                    +201028661605
+                  </a>
+                  <span className="px-1">/</span>
+                  <a
+                    href="https://wa.me/201125011939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-1 rounded transition-colors hover:text-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
+                  >
+                    +201125011939
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -289,7 +312,7 @@ const Contact = () => {
                   href="https://cal.com/diodiv"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-sm text-primary px-1 -ml-1 rounded transition-colors hover:underline focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
                 >
                   Let's Talk →
                 </a>
