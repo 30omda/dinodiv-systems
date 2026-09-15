@@ -131,10 +131,10 @@ const Terms = () => {
               <p>
                 For questions regarding these terms, contact us at{" "}
                 <a
-                  href="mailto:dinodiv.info@gmail.com"
+                  href="mailto:contact@dinodiv.info"
                   className="text-primary hover:underline"
                 >
-                  dinodiv.info@gmail.com
+                  contact@dinodiv.info
                 </a>
                 .
               </p>
