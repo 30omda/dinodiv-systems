@@ -124,13 +124,10 @@ const Contact = () => {
                   id="contact-email"
                   type="email"
                   name="email"
-
                   placeholder="Email Address"
-
                   required
-
+                  aria-invalid={state.errors?.getErrors("email")?.length > 0 ? "true" : undefined}
                   className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
                 />
 
                 <ValidationError
@@ -173,15 +170,11 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-
                 placeholder="Tell us about your project..."
-
                 rows={5}
-
                 required
-
+                aria-invalid={state.errors?.getErrors("message")?.length > 0 ? "true" : undefined}
                 className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-
               />
 
               <ValidationError
@@ -267,7 +260,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">contact@dinodiv.info</p>
+                <a href="mailto:contact@dinodiv.info" className="text-sm text-muted-foreground transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 -mx-1">contact@dinodiv.info</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -276,7 +269,9 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">WhatsApp</p>
-                <p className="text-sm text-muted-foreground"> +201028661605 / +201125011939 </p>
+                <p className="text-sm text-muted-foreground">
+                  <a href="https://wa.me/201028661605" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 -mx-1">+201028661605</a> / <a href="https://wa.me/201125011939" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 -mx-1">+201125011939</a>
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -289,7 +284,7 @@ const Contact = () => {
                   href="https://cal.com/diodiv"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-sm text-primary hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 -mx-1"
                 >
                   Let's Talk →
                 </a>
