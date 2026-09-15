@@ -132,10 +132,10 @@ const Privacy = () => {
               <p>
                 For privacy-related inquiries, contact us at{" "}
                 <a
-                  href="mailto:dinodiv.info@gmail.com"
-                  className="text-primary hover:underline"
+                  href="mailto:contact@dinodiv.info"
+                  className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md transition-all px-1 -ml-1"
                 >
-                  dinodiv.info@gmail.com
+                  contact@dinodiv.info
                 </a>
                 .
               </p>
