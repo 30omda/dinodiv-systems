@@ -5,3 +5,7 @@
 ## 2025-05-13 - Smooth and Accessible Navigation Patterns
 **Learning:** For animated mobile menus, combining `AnimatePresence` with `aria-expanded` and `aria-controls` creates a cohesive experience for all users. Adding `focus-visible` rings with `rounded-md` and `transition-all` ensures keyboard navigation is visually clear and consistent with the site's design language.
 **Action:** Always synchronize ARIA states with animation lifecycles and ensure all interactive elements in the navigation have explicit focus states.
+
+## 2025-05-14 - Accessible Ratings & Multilingual Quote Formatting
+**Learning:** For icon star rating groups, wrapping icons in a container with `role="img"` and `aria-label` while setting `aria-hidden="true"` on inner SVGs avoids repetitive screen reader output. Adding `dir="auto"` to user quotes ensures correct bidirectional text alignment for multilingual content (e.g., Arabic).
+**Action:** Always pair rating icon containers with ARIA image attributes and apply `dir="auto"` to user-generated or multilingual quote text elements.
