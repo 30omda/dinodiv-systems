@@ -62,7 +62,7 @@ const Testimonials = () => {
                     />
                   ))}
                 </div>
-                <p className="mb-6 text-sm leading-relaxed text-muted-foreground italic">
+                <p dir="auto" className="mb-6 text-sm leading-relaxed text-muted-foreground italic">
                   "{t.quote}"
                 </p>
               </div>
