@@ -5,3 +5,7 @@
 ## 2025-05-13 - Smooth and Accessible Navigation Patterns
 **Learning:** For animated mobile menus, combining `AnimatePresence` with `aria-expanded` and `aria-controls` creates a cohesive experience for all users. Adding `focus-visible` rings with `rounded-md` and `transition-all` ensures keyboard navigation is visually clear and consistent with the site's design language.
 **Action:** Always synchronize ARIA states with animation lifecycles and ensure all interactive elements in the navigation have explicit focus states.
+
+## 2026-08-11 - Accessible Skip-to-Content Bypass Link
+**Learning:** For keyboard and screen reader accessibility on landing pages with extensive navigation menus, an accessible skip link (`sr-only focus:not-sr-only`) targeting `<main id="main-content" tabIndex={-1}>` provides an immediate bypass mechanism without altering visual UI until focused.
+**Action:** Always include a skip link targeting a focused `<main>` landmark with `tabIndex={-1}` for keyboard navigation bypass.
